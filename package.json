@@ -17,9 +17,14 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "dev": "env-cmd -f ./environment/.env react-scripts start",
+    "uat": "env-cmd -f ./environment/.env.test react-scripts start",
+    "prod": "env-cmd -f ./environment/.env.prod react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "build:dev": "env-cmd -f ./environment/.env react-scripts start",
+    "build:uat": "env-cmd -f ./environment/.env.test react-scripts start",
+    "build:prod": "env-cmd -f ./environment/.env.prod react-scripts start",
+    "test": "react-scripts test"
   },
   "eslintConfig": {
     "extends": [
