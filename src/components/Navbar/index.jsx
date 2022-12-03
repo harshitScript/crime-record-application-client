@@ -1,5 +1,5 @@
 import { NavBarBlock } from "./index.style";
-import logo from "../../assets/Harshit Org.png";
+import logo from "../../assets/default-logo.png";
 
 const Navbar = ({ ...props }) => {
   return (
