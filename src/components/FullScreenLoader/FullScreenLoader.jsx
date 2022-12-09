@@ -1,4 +1,4 @@
-import useTenantConfiguration from "../../customHooks/useTenantInfo";
+import useTenantConfiguration from "../../customHooks/useTenantConfiguration";
 import Loader1 from "../Loaders/Loader1";
 import { Outer } from "./FullScreenLoader.style";
 

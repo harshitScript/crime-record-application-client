@@ -1,9 +1,16 @@
 import Page from "../../components/Page/Page";
-import useTenantConfiguration from "../../customHooks/useTenantInfo";
+import useTenantConfiguration from "../../customHooks/useTenantConfiguration";
+import ViewCard from "./components/ViewCard";
 
 const JourneyPage = () => {
   const { appViews } = useTenantConfiguration();
-  console.log("The app views available => ", appViews);
-  return <Page></Page>;
+
+  return (
+    <Page>
+      {appViews.map((view) => (
+        <ViewCard key={view?.code} {...view} />
+      ))}
+    </Page>
+  );
 };
 export default JourneyPage;

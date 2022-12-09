@@ -1,4 +1,4 @@
-import useTenantConfiguration from "../../customHooks/useTenantInfo";
+import useTenantConfiguration from "../../customHooks/useTenantConfiguration";
 import useTheme from "../../customHooks/useTheme";
 import { Outer } from "./ServerDownPage.style";
 

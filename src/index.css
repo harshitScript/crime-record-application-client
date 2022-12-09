@@ -1,4 +1,29 @@
 body {
   margin: 0 !important;
   padding: 0 !important;
+  font-family: Ubuntu-Light, serif;
+}
+
+@font-face {
+  font-family: "Ubuntu-Light";
+  src: local("Ubuntu-Light"),
+    url("./assets/fonts/Ubuntu-Light.ttf") format("ttf");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+.blink {
+  animation: blink-animation 1s steps(5, start) infinite;
+  -webkit-animation: blink-animation 1s steps(5, start) infinite;
+}
+@keyframes blink-animation {
+  to {
+    visibility: hidden;
+  }
+}
+@-webkit-keyframes blink-animation {
+  to {
+    visibility: hidden;
+  }
 }
