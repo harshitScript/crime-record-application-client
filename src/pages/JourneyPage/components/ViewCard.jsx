@@ -2,10 +2,15 @@ import styled from "styled-components/macro";
 import useTheme from "../../../customHooks/useTheme";
 import { Link } from "react-router-dom";
 
-const ViewCard = ({ title, description, code }) => {
+const ViewCard = ({ title, description, code, imageURL }) => {
   const { theme } = useTheme();
   return (
-    <Outer {...theme} className="flip" to={`/authentication/${code}`}>
+    <Outer
+      {...theme}
+      className="flip"
+      to={`/authentication/${code}`}
+      image={imageURL}
+    >
       <main className="main">
         <span>{description}</span>
       </main>
@@ -26,20 +31,23 @@ const Outer = styled(Link)`
   color: ${({ secondaryColor }) => secondaryColor} !important;
 
   .main {
-    background: linear-gradient(
+    background-image: url(${({ image }) => image});
+    /*  background: linear-gradient(
       to left,
       ${({ primaryColor }) => primaryColor},
       #fff
-    );
+    ); */
+    background-size: cover;
     border-radius: 0.5rem 0.5rem 0 0;
     flex: 3;
     padding: 0.5rem;
     box-sizing: border-box;
 
     & > span {
-      font-size: 0.8rem;
+      font-size: 1rem;
       font-weight: 600;
       width: 100%;
+      color: #fff;
     }
   }
 
