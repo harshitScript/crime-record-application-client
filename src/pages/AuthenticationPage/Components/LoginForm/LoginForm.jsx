@@ -48,12 +48,8 @@ const LoginForm = () => {
               type="email"
               placeholder="Enter email to login."
               {...register("email", {
-                required: {
-                  value: true,
-                  message: "This field is required",
-                },
+                required: true,
               })}
-              autoComplete
             />
             {errors?.email?.message ? (
               <Error>{errors?.email?.message}</Error>
@@ -66,12 +62,8 @@ const LoginForm = () => {
               type="password"
               placeholder="Enter password to login."
               {...register("password", {
-                required: {
-                  value: true,
-                  message: "This field is required",
-                },
+                required: true,
               })}
-              autoComplete
             />
             {errors?.password?.message ? (
               <Error>{errors?.password?.message}</Error>
