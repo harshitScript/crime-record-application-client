@@ -1,12 +1,13 @@
 import styled from "styled-components/macro";
 import useTheme from "../../../customHooks/useTheme";
 import { Link } from "react-router-dom";
+import React from "react";
 
 const ViewCard = ({ title, description, code, imageURL }) => {
   const { theme } = useTheme();
   return (
     <Outer
-      {...theme}
+      primaryColor={theme?.primaryColor}
       className="flip"
       to={`/authentication/${code}`}
       image={imageURL}
@@ -28,26 +29,26 @@ const Outer = styled(Link)`
   display: flex;
   flex-direction: column;
   text-decoration: unset;
-  color: ${({ secondaryColor }) => secondaryColor} !important;
+  color: ${({ primaryColor }) => primaryColor} !important;
 
   .main {
     background-image: url(${({ image }) => image});
-    /*  background: linear-gradient(
-      to left,
-      ${({ primaryColor }) => primaryColor},
-      #fff
-    ); */
     background-size: cover;
     border-radius: 0.5rem 0.5rem 0 0;
     flex: 3;
     padding: 0.5rem;
     box-sizing: border-box;
 
+    &:hover {
+      opacity: 0.6;
+    }
+
     & > span {
       font-size: 1rem;
       font-weight: 600;
       width: 100%;
       color: #fff;
+      text-shadow: 1rem 0.5rem 0.5rem grey;
     }
   }
 
@@ -62,6 +63,7 @@ const Outer = styled(Link)`
     justify-content: flex-end;
     font-size: 1.2rem;
     font-weight: bold;
+    text-transform: uppercase;
   }
 `;
 
