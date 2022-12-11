@@ -5,7 +5,7 @@ const configurationApi = createApi({
   baseQuery: fetchBaseQuery({
     baseUrl: process.env.REACT_APP_BASE_URI,
     headers: {
-      Authorization: localStorage.getItem("authToken"),
+      Authorization: `Bearer ${localStorage.getItem("authToken")}`,
     },
   }),
   endpoints: (builder) => ({

@@ -1,12 +1,12 @@
 import useTenantConfiguration from "../../customHooks/useTenantConfiguration";
 import useTheme from "../../customHooks/useTheme";
-import { Outer } from "./ServerDownPage.style";
+import { ServerDownOuter } from "./FullScreenError.style";
 
 const ServerDownPage = ({ refetch }) => {
   const { tenantLogo } = useTenantConfiguration();
   const { theme } = useTheme();
   return (
-    <Outer {...theme}>
+    <ServerDownOuter {...theme}>
       <main>
         <img
           src={tenantLogo}
@@ -20,7 +20,7 @@ const ServerDownPage = ({ refetch }) => {
           </span>
         </section>
       </main>
-    </Outer>
+    </ServerDownOuter>
   );
 };
 export default ServerDownPage;

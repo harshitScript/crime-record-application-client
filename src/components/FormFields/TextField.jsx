@@ -4,7 +4,7 @@ import { forwardRef } from "react";
 
 const TextField = forwardRef(({ ...props }, ref) => {
   const { theme } = useTheme();
-  return <Input {...props} {...theme} auto />;
+  return <Input {...props} {...theme} ref={ref} />;
 });
 
 export default TextField;
