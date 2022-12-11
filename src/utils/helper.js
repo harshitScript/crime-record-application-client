@@ -12,3 +12,12 @@ export const envUtility = () => {
     theme,
   };
 };
+
+export const copyToClipBoard = ({
+  text = "",
+  success = () => {},
+  failure = () => {},
+}) => {
+  navigator.clipboard.writeText(text).then(success).catch(failure);
+};
+

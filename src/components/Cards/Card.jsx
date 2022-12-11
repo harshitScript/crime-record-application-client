@@ -5,6 +5,7 @@ export const Card = styled.section`
   box-sizing: border-box;
   box-shadow: 0 0 0.5rem grey;
   border-radius: 0.5rem;
+  background: ${({ primaryColor }) => primaryColor};
 `;
 
 Card.Header = styled.div`
@@ -19,7 +20,7 @@ Card.Header.Title = styled.div`
   font-size: 1.2rem;
 `;
 Card.Header.Description = styled.small`
-  color: ${({ primaryColor }) => primaryColor};
+  color: ${({ secondaryColor }) => secondaryColor};
 `;
 Card.Body = styled.div``;
 Card.Footer = styled.div`

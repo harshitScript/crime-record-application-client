@@ -9,7 +9,7 @@ const useUser = () => {
   const { data, isError, isFetching, isUninitialized, isLoading, refetch } =
     useGetUserInfoQuery({ userId: getAuthData()?.userId });
 
-  const userData = data?.data;
+  const userData = data?.user;
   const userDataExist = !!userData;
   const userDataLoading = isFetching || isUninitialized || isLoading;
   const userDataError = isError;

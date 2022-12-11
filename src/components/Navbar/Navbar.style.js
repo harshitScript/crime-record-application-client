@@ -3,9 +3,10 @@ import styled from "styled-components/macro";
 export const NavBarBlock = styled.div`
   padding: 1rem;
   box-sizing: border-box;
+  box-shadow: 0 0 4px grey;
   background: linear-gradient(
     to right,
-    #fff,
+    ${({ ternaryColor }) => ternaryColor},
     ${({ primaryColor }) => primaryColor}
   );
   display: flex;

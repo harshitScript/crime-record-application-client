@@ -61,7 +61,7 @@ const LoginForm = () => {
   };
 
   return (
-    <Card>
+    <Card {...theme}>
       <Card.Header>
         <Card.Header.Title {...theme}>
           {formConfiguration[type].title}

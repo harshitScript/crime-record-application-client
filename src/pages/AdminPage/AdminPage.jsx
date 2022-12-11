@@ -1,6 +1,11 @@
 import Page from "../../components/Page/Page";
+import Sidebar from "./components/Sidebar/Sidebar";
 
 const AdminPage = () => {
-  return <Page>The admin Page</Page>;
+  return (
+    <Page>
+      <Sidebar />
+    </Page>
+  );
 };
 export default AdminPage;
