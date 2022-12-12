@@ -1,17 +1,22 @@
 import styled from "styled-components/macro";
 import useTheme from "../../customHooks/useTheme";
 import { MdWbTwighlight } from "react-icons/md";
-const LinkButton = ({ children, loader = false, ...props }) => {
+const LinkButton = ({
+  children,
+  loader = false,
+  fullWidth = false,
+  ...props
+}) => {
   const { theme } = useTheme();
 
   return (
-    <StyledButton {...theme} {...props}>
+    <StyledButton {...theme} fullWidth={fullWidth} {...props}>
       {loader ? <MdWbTwighlight className="blink" /> : children}
     </StyledButton>
   );
 };
 const StyledButton = styled.button`
-  min-width: 100px;
+  min-width: ${({ fullWidth }) => (fullWidth ? "100%" : "100px")};
   min-height: 40px;
   font-weight: bold;
   background: transparent;

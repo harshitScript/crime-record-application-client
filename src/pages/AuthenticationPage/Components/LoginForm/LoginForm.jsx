@@ -25,39 +25,27 @@ const LoginForm = () => {
 
   const formConfiguration = {
     admin: {
-      async onSubmit(data) {
-        try {
-          const response = await triggerLogin({ body: data });
-          if (response.error) {
-            throw new Error();
-          }
-          setAuthDataAndReload({ ...response.data, redirect: "/admin" });
-        } catch {
-          toast.error("Login failed, please check credentials and retry.", {
-            position: "top-center",
-          });
-        }
-      },
       title: "Admin Login",
       description: "login as a admin.",
     },
     user: {
-      async onSubmit(data) {
-        try {
-          const response = await triggerLogin({ body: data });
-          if (response.error) {
-            throw new Error();
-          }
-          setAuthDataAndReload({ ...response.data, redirect: "/user" });
-        } catch {
-          toast.error("Login failed, please check credentials and retry.", {
-            position: "top-center",
-          });
-        }
-      },
       title: "User Login",
       description: "login as a user.",
     },
+  };
+
+  const onSubmit = async (data) => {
+    try {
+      const response = await triggerLogin({ body: data });
+      if (response.error) {
+        throw new Error();
+      }
+      setAuthDataAndReload({ ...response.data, redirect: "/dashboard" });
+    } catch {
+      toast.error("Login failed, please check credentials and retry.", {
+        position: "top-center",
+      });
+    }
   };
 
   return (
@@ -72,7 +60,7 @@ const LoginForm = () => {
       </Card.Header>
 
       <Card.Body>
-        <form onSubmit={handleSubmit(formConfiguration[type].onSubmit)}>
+        <form onSubmit={handleSubmit(onSubmit)}>
           <Box>
             <TextField
               type="email"

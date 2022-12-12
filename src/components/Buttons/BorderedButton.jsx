@@ -1,17 +1,22 @@
 import styled from "styled-components/macro";
 import useTheme from "../../customHooks/useTheme";
 import { MdWbTwighlight } from "react-icons/md";
-const BorderedButton = ({ children, loader = false, ...props }) => {
+const BorderedButton = ({
+  children,
+  loader = false,
+  fullWidth = false,
+  ...props
+}) => {
   const { theme } = useTheme();
 
   return (
-    <StyledButton {...theme} {...props}>
+    <StyledButton {...theme} fullWidth={fullWidth} {...props}>
       {loader ? <MdWbTwighlight className="blink" /> : children}
     </StyledButton>
   );
 };
 const StyledButton = styled.button`
-  min-width: 100px;
+  min-width: ${({ fullWidth }) => (fullWidth ? "100%" : "100px")};
   min-height: 40px;
   border: 1px solid ${({ secondaryColor }) => secondaryColor};
   font-weight: bold;
@@ -23,5 +28,9 @@ const StyledButton = styled.button`
   height: ${({ hg }) => hg};
   opacity: ${({ disabled }) => (disabled ? "0.7" : "1")};
   cursor: ${({ disabled }) => (disabled ? "not-allowed" : "pointer")};
+  &:hover {
+    background: ${({ secondaryColor }) => secondaryColor};
+    color: #fff;
+  }
 `;
 export default BorderedButton;

@@ -1,10 +1,12 @@
 import useTheme from "../../../../../../../customHooks/useTheme";
 import { Outer } from "./Action.style";
 
-const Action = ({ config = { title: "", helper: "" }, onClick = () => {} }) => {
+const Action = ({
+  config = { title: "", description: "", onClick: () => {} },
+}) => {
   const { theme } = useTheme();
   return (
-    <Outer title={config.helper} {...theme} onClick={onClick}>
+    <Outer title={config?.description} {...theme} onClick={config?.onClick}>
       <span className="rounded-letter">
         {config?.title?.slice(0, 1)?.toUpperCase()}
       </span>

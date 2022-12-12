@@ -2,11 +2,10 @@ import React from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
 import Layout1 from "./components/Layouts/Layout1";
 import useAuth from "./customHooks/useAuth";
-import AdminPage from "./pages/AdminPage/AdminPage";
+import DashboardPage from "./pages/DashboardPage/DashboardPage";
 import AuthenticationPage from "./pages/AuthenticationPage/AuthenticationPage";
 import JourneyPage from "./pages/JourneyPage/JourneyPage";
 import { Toaster } from "react-hot-toast";
-import UserPage from "./pages/UserPage/UserPage";
 import CheckUser from "./Checkers/CheckUser";
 
 function App() {
@@ -16,25 +15,22 @@ function App() {
       <Routes>
         <Route path="/" element={<Navigate to="/journey" replace />} />
         <Route path="/journey" element={<JourneyPage />} />
-        <Route path="/authentication/:type" element={<AuthenticationPage />} />
         <Route
-          path="/admin/*"
+          path="/authentication/:type"
           element={
             isAuthenticated() ? (
-              <CheckUser>
-                <AdminPage />
-              </CheckUser>
+              <Navigate to="/dashboard" replace />
             ) : (
-              <Navigate to="/authentication/admin" replace />
+              <AuthenticationPage />
             )
           }
         />
         <Route
-          path="/user/*"
+          path="/dashboard/*"
           element={
             isAuthenticated() ? (
               <CheckUser>
-                <UserPage />
+                <DashboardPage />
               </CheckUser>
             ) : (
               <Navigate to="/authentication/user" replace />
