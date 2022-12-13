@@ -1,5 +1,6 @@
 import { useGetConfigurationQuery } from "../store/configurationApi";
 import { envUtility } from "../utils/helper";
+import backgroundImage from "../assets/Wallpaper/CrimeTapes.png";
 
 const useTheme = () => {
   const { data } = useGetConfigurationQuery();
@@ -7,6 +8,6 @@ const useTheme = () => {
 
   const theme = data?.data?.theme || envTheme;
 
-  return { theme };
+  return { theme, backgroundImage };
 };
 export default useTheme;

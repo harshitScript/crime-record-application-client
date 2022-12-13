@@ -8,12 +8,12 @@ import useAuth from "../customHooks/useAuth";
 const CheckUser = ({ children }) => {
   const navigate = useNavigate();
 
-  const { removeAuthData } = useAuth();
+  const { removeAuthDataAndReload } = useAuth();
 
   const { userDataLoading, userDataError, userDataRefetch } = useUser();
 
   const goBackHandler = () => {
-    removeAuthData();
+    removeAuthDataAndReload();
     navigate(`/authentication/user`, { replace: true });
   };
 

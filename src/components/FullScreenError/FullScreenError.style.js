@@ -6,6 +6,10 @@ export const ServerDownOuter = styled.div`
   display: grid;
   place-items: center;
   padding: 1rem;
+  background: #fff;
+  position: fixed;
+  top: 0;
+  left: 0;
   box-sizing: border-box;
   & img {
     width: 150px;
@@ -39,6 +43,10 @@ export const FullScreenErrorOuter = styled.div`
   display: grid;
   place-items: center;
   padding: 1rem;
+  background: #fff;
+  position: fixed;
+  top: 0;
+  left: 0;
   box-sizing: border-box;
   & img {
     width: 300px;

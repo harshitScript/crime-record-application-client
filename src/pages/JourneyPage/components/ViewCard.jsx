@@ -60,7 +60,7 @@ const Outer = styled(Link)`
     box-sizing: border-box;
     display: flex;
     align-items: center;
-    justify-content: flex-end;
+    justify-content: flex-start;
     font-size: 1.2rem;
     font-weight: bold;
     text-transform: uppercase;

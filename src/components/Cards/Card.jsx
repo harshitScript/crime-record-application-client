@@ -5,7 +5,8 @@ export const Card = styled.section`
   box-sizing: border-box;
   box-shadow: 0 0 0.5rem grey;
   border-radius: 0.5rem;
-  background: ${({ primaryColor }) => primaryColor};
+  background: ${({ primaryColor }) => primaryColor || "#fff"};
+  margin: 0.5rem;
 `;
 
 Card.Header = styled.div`

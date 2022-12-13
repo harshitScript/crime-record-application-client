@@ -3,7 +3,12 @@ import BorderedButton from "../Buttons/BorderedButton";
 import LinkButton from "../Buttons/LinkButton";
 import { FullScreenErrorOuter } from "./FullScreenError.style";
 
-const FullScreenError = ({ refetch, title = "", image = "", back }) => {
+const FullScreenError = ({
+  refetch,
+  title = "",
+  image = "",
+  back = () => {},
+}) => {
   const { theme } = useTheme();
   return (
     <FullScreenErrorOuter {...theme}>

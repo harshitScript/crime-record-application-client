@@ -33,15 +33,20 @@ export const Toggle = styled.div`
   background: ${({ primaryColor }) => primaryColor};
   position: fixed;
   z-index: 2;
-  top: 30%;
+  top: 40%;
   left: 0;
   border-radius: 0 0.5rem 0.5rem 0;
   display: grid;
+  opacity: 0.7;
   cursor: pointer;
   place-items: center;
 
   & > svg {
     font-weight: bold;
     color: #fff;
+  }
+
+  &:hover {
+    opacity: 1;
   }
 `;
