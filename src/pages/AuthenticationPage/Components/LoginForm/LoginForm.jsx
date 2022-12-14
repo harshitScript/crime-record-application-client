@@ -2,13 +2,13 @@ import { useParams } from "react-router-dom";
 import { Box } from "../../../../components/Box/Box";
 import Button from "../../../../components/Buttons/Button";
 import { Card } from "../../../../components/Cards/Card";
-import TextField from "../../../../components/FormFields/TextField";
 import useTheme from "../../../../customHooks/useTheme";
 import { useForm } from "react-hook-form";
 import { Error } from "../../../../components/Errors/Error";
 import { useLoginUserMutation } from "../../../../store/userApi";
 import toast from "react-hot-toast";
 import useAuth from "../../../../customHooks/useAuth";
+import { TextField } from "../../../../components/FormFields/FormFields.style";
 
 const LoginForm = () => {
   const { theme } = useTheme();

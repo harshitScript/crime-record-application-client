@@ -1,6 +1,7 @@
 import styled from "styled-components/macro";
+import { BiImageAdd } from "react-icons/bi";
 
-export const Input = styled.input`
+export const TextField = styled.input`
   width: 100%;
   height: 40px;
   outline: unset;
@@ -11,4 +12,63 @@ export const Input = styled.input`
   font-size: 0.7rem;
   padding: 0 0.5rem;
   color: ${({ primaryColor }) => primaryColor};
+`;
+
+export const HiddenInput = styled.input`
+  display: none;
+`;
+
+export const MockFileOuter = styled.div`
+  width: 100%;
+  height: 140px;
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  border: 1px dashed ${({ secondaryColor }) => secondaryColor};
+`;
+
+export const ImageUploadIcon = styled(BiImageAdd)`
+  width: 50px;
+  height: 50px;
+  color: ${({ secondaryColor }) => secondaryColor};
+`;
+
+export const UploadDisplaySectionOuter = styled.section`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  .title {
+    font-size: 0.8rem;
+    font-weight: bold;
+    margin: 0.5rem 0;
+  }
+  .sub-title {
+    font-size: 0.6rem;
+    margin: unset;
+  }
+`;
+
+export const ImageOuter = styled.div`
+  height: 100%;
+  width: 50%;
+  padding: 0.5rem;
+  box-sizing: border-box;
+  & > img {
+    box-sizing: border-box;
+    width: 100%;
+    object-fit: contain;
+    border-radius: 0.5rem;
+  }
+`;
+
+export const DetailsOuter = styled.div`
+  padding: 0.5rem;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 50%;
 `;

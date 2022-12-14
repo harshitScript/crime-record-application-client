@@ -21,3 +21,5 @@ export const copyToClipBoard = ({
   navigator.clipboard.writeText(text).then(success).catch(failure);
 };
 
+export const sizeInMB = (sizeInBytes) =>
+  (sizeInBytes / (1024 * 1024)).toFixed(2);
