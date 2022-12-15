@@ -17,6 +17,12 @@ body {
   animation: blink-animation 1s steps(5, start) infinite;
   -webkit-animation: blink-animation 1s steps(5, start) infinite;
 }
+
+input:read-only {
+  opacity: 0.8;
+  cursor: not-allowed;
+}
+
 @keyframes blink-animation {
   to {
     visibility: hidden;

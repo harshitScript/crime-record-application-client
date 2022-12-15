@@ -27,6 +27,8 @@ export const MockFileOuter = styled.div`
   justify-content: center;
   flex-direction: column;
   border: 1px dashed ${({ secondaryColor }) => secondaryColor};
+  opacity: ${({ readOnly }) => (readOnly ? 0.8 : 1)};
+  cursor: ${({ readOnly }) => (readOnly ? "not-allowed" : "pointer")};
 `;
 
 export const ImageUploadIcon = styled(BiImageAdd)`
@@ -71,4 +73,20 @@ export const DetailsOuter = styled.div`
   justify-content: center;
   flex-direction: column;
   width: 50%;
+`;
+
+export const Select = styled.select`
+  width: 100%;
+  height: 40px;
+  outline: unset;
+  box-sizing: border-box;
+  border: unset;
+  border-radius: 0.5rem;
+  border-bottom: 0.3rem solid ${({ secondaryColor }) => secondaryColor};
+  font-size: 0.7rem;
+  padding: 0 0.5rem;
+  color: ${({ primaryColor }) => primaryColor};
+  & > option {
+    box-sizing: border-box;
+  }
 `;

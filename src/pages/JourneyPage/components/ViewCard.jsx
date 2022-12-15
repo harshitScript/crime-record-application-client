@@ -29,7 +29,7 @@ const Outer = styled(Link)`
   display: flex;
   flex-direction: column;
   text-decoration: unset;
-  color: ${({ primaryColor }) => primaryColor} !important;
+  color: ${({ SecondaryColor }) => SecondaryColor} !important;
 
   .main {
     background-image: url(${({ image }) => image});

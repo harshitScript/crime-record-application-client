@@ -23,3 +23,23 @@ export const copyToClipBoard = ({
 
 export const sizeInMB = (sizeInBytes) =>
   (sizeInBytes / (1024 * 1024)).toFixed(2);
+
+export const permissions = [
+  {
+    code: "root",
+    label: "Root",
+    description: "Administrator level permission.",
+  },
+  {
+    code: "read",
+    label: "Read",
+    description:
+      "Read access permissions to the confidential data e.g. users data.",
+  },
+  {
+    code: "write",
+    label: "Write",
+    description:
+      "Write access permissions to create/edit records of criminals.",
+  },
+];

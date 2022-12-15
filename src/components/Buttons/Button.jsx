@@ -6,7 +6,7 @@ const Button = ({ children, loader = false, fullWidth = false, ...props }) => {
 
   return (
     <StyledButton {...theme} fullWidth={fullWidth} {...props}>
-      {loader ? <MdWbTwighlight className="blink" /> : children}
+      {children} {loader ? <MdWbTwighlight className="blink" /> : <></>}
     </StyledButton>
   );
 };

@@ -10,7 +10,7 @@ import {
 } from "./FormFields.style";
 
 const FileField = forwardRef(
-  ({ accepts = "", file, label = "", ...props }, ref) => {
+  ({ accepts = "", file, readOnly, label = "", ...props }, ref) => {
     return (
       <>
         <HiddenInput
@@ -18,20 +18,24 @@ const FileField = forwardRef(
           type="file"
           id="file_input"
           accept={accepts}
+          readOnly={readOnly}
           {...props}
         />
-        <MockFileField file={file} />
+        <MockFileField file={file} readOnly={readOnly} />
       </>
     );
   }
 );
 
-const MockFileField = ({ file }) => {
+const MockFileField = ({ file, readOnly }) => {
   const useFile = file?.[0];
   const openFilePicker = () => document.querySelector("#file_input").click();
   return (
     <>
-      <MockFileOuter onClick={openFilePicker}>
+      <MockFileOuter
+        onClick={readOnly ? () => {} : openFilePicker}
+        readOnly={readOnly}
+      >
         {useFile ? (
           <UploadDisplaySection useFile={useFile} />
         ) : (

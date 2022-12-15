@@ -20,6 +20,7 @@ export const Outer = styled.div`
   transform: translateX(50%);
   transition: all 300ms;
   opacity: 0.7;
+  z-index: 2;
   &:hover {
     transform: translateX(0%);
     opacity: 1;

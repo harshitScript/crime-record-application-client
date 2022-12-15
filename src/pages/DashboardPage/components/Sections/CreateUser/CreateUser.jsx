@@ -21,5 +21,6 @@ const CreateUser = () => {
 const StickyCard = styled(Card)`
   position: sticky;
   top: 10px;
+  z-index: 1;
 `;
 export default CreateUser;
