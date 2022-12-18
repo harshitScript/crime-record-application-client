@@ -15,6 +15,7 @@ import { useRef } from "react";
 import { useCreateUserMutation } from "../../../../../../../store/userApi";
 import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import useAuth from "../../../../../../../customHooks/useAuth";
 
 const CreateUserForm = () => {
   const {
@@ -25,11 +26,11 @@ const CreateUserForm = () => {
   } = useForm({ mode: "all" });
 
   const [createUser, { isLoading, isError }] = useCreateUserMutation();
-
-  const [viewOnly, setViewOnly] = useState(false);
-
   const permissionRef = useRef();
   const navigate = useNavigate();
+  const { getAuthData } = useAuth();
+
+  const [viewOnly, setViewOnly] = useState(false);
 
   const saveClickHandler = (e) => {
     setViewOnly(true);
@@ -43,9 +44,7 @@ const CreateUserForm = () => {
     const userData = {
       ...data,
       image: data?.image[0],
-      permissions: permissionRef?.current?.value
-        ?.split(", ")
-        .filter((permission) => permission),
+      permissions: permissionRef?.current?.value,
     };
 
     //* Clone our data into form generated data.
@@ -56,6 +55,7 @@ const CreateUserForm = () => {
     formData.append("email", userData?.email);
     formData.append("password", userData?.password);
     formData.append("permissions", userData?.permissions);
+    formData.append("creator", getAuthData().userId);
 
     try {
       const res = await createUser({ body: formData });
@@ -235,7 +235,7 @@ const CreateUserForm = () => {
                 })}
               />
               {errors?.password?.message ? (
-                <Error>{errors?.mobile?.message}</Error>
+                <Error>{errors?.password?.message}</Error>
               ) : (
                 <></>
               )}

@@ -8,7 +8,7 @@ export const Outer = styled.section`
   overflow-y: auto;
   width: 50%;
   background: ${({ primaryColor }) => primaryColor};
-  z-index: 2;
+  z-index: 4;
   padding: 1rem;
   box-sizing: border-box;
   box-shadow: 0 0 4px grey;
@@ -24,7 +24,7 @@ export const Backdrop = styled.div`
   height: 100vh;
   width: 100%;
   background: rgba(0, 0, 0, 0.5);
-  z-index: 1;
+  z-index: 3;
 `;
 
 export const Toggle = styled.div`

@@ -48,6 +48,9 @@ export const FullScreenErrorOuter = styled.div`
   top: 0;
   left: 0;
   box-sizing: border-box;
+  main {
+    width: 100%;
+  }
   & img {
     width: 300px;
   }

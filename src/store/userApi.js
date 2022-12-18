@@ -30,6 +30,11 @@ const userApi = createApi({
         body,
       }),
     }),
+    listUser: builder.query({
+      query: ({ page }) => ({
+        url: `user/list/${page}`,
+      }),
+    }),
   }),
 });
 
@@ -37,6 +42,7 @@ export const {
   useGetUserInfoQuery,
   useCreateUserMutation,
   useLoginUserMutation,
+  useListUserQuery,
 } = userApi;
 
 export default userApi;

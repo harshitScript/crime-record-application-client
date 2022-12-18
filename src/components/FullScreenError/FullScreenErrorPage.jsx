@@ -14,7 +14,7 @@ const FullScreenError = ({
     <FullScreenErrorOuter {...theme}>
       <main>
         {title ? <section className="error-block">{title}</section> : <></>}
-        <img src={image} title={title} alt="harshit's org" />
+        {image ? <img src={image} title={title} alt="harshit's org" /> : <></>}
         <div className="button-group">
           {refetch ? (
             <BorderedButton onClick={refetch}>Retry</BorderedButton>

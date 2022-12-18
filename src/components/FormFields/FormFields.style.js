@@ -45,6 +45,8 @@ export const UploadDisplaySectionOuter = styled.section`
     font-size: 0.8rem;
     font-weight: bold;
     margin: 0.5rem 0;
+    word-break: break-all;
+    text-align: center;
   }
   .sub-title {
     font-size: 0.6rem;
@@ -53,7 +55,7 @@ export const UploadDisplaySectionOuter = styled.section`
 `;
 
 export const ImageOuter = styled.div`
-  height: 100%;
+  height: 80%;
   width: 50%;
   padding: 0.5rem;
   box-sizing: border-box;
