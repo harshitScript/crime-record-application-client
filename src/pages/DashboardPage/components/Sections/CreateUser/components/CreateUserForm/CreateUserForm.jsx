@@ -7,7 +7,6 @@ import { Card } from "../../../../../../../components/Cards/Card";
 import TitleSection from "../TitleSection/TitleSection";
 import { Box } from "../../../../../../../components/Box/Box";
 import { TextField } from "../../../../../../../components/FormFields/FormFields.style";
-import FileField from "../../../../../../../components/FormFields/FileField";
 import { Error } from "../../../../../../../components/Errors/Error";
 import MultiSelectDD from "../../../../../../../components/FormFields/MultiSelectDD";
 import { permissions } from "../../../../../../../utils/helper";
@@ -16,6 +15,7 @@ import { useCreateUserMutation } from "../../../../../../../store/userApi";
 import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import useAuth from "../../../../../../../customHooks/useAuth";
+import FileField from "../../../../../../../components/FormFields/FileFeild/FileField";
 
 const CreateUserForm = () => {
   const {
@@ -39,6 +39,8 @@ const CreateUserForm = () => {
   const backClickHandler = () => {
     setViewOnly(false);
   };
+
+  console.log("The image => ", watch("image"));
 
   const submitHandler = async (data) => {
     const userData = {

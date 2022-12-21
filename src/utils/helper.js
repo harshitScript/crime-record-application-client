@@ -43,3 +43,11 @@ export const permissions = [
       "Write access permissions to create/edit records of criminals.",
   },
 ];
+
+export const urlToObject = async ({ imageURL, fileName }) => {
+  const response = await fetch(imageURL);
+  // here imageURL is url/location of image
+  const blob = await response.blob();
+  const file = new File([blob], fileName, { type: blob.type });
+  return file;
+};

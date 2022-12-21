@@ -40,12 +40,12 @@ export const CriminalDDHeader = styled.div`
   cursor: ${({ active }) => (active ? "pointer" : "not-allowed")};
   opacity: ${({ active }) => (active ? 1 : 0.7)};
   & > span {
-    font-size: 0.8rem;
+    font-size: 0.7rem;
     font-weight: bold;
   }
 
   & > svg {
-    font-size: 0.8rem;
+    font-size: 0.7rem;
   }
 `;
 
