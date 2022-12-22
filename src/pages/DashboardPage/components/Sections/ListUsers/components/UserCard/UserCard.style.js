@@ -1,4 +1,5 @@
 import styled from "styled-components/macro";
+import { BsFillTrashFill } from "react-icons/bs";
 import { Card } from "../../../../../../../components/Cards/Card";
 
 export const CardOuter = styled(Card)`
@@ -15,6 +16,7 @@ export const Image = styled.img`
 
 export const Main = styled.main`
   padding: 0.5rem;
+  position: relative;
 `;
 
 export const Permissions = styled.pre`
@@ -80,4 +82,12 @@ export const Option = styled.div`
   & > code {
     font-size: 0.6rem;
   }
+`;
+
+export const TrashIcon = styled(BsFillTrashFill)`
+  color: ${({ primaryColor }) => primaryColor};
+  cursor: pointer;
+  position: absolute;
+  top: -130px;
+  right: 5px;
 `;
