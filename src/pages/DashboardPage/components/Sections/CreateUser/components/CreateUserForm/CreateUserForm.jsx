@@ -9,13 +9,14 @@ import { Box } from "../../../../../../../components/Box/Box";
 import { TextField } from "../../../../../../../components/FormFields/FormFields.style";
 import { Error } from "../../../../../../../components/Errors/Error";
 import MultiSelectDD from "../../../../../../../components/FormFields/MultiSelectDD";
-import { permissions } from "../../../../../../../utils/helper";
+import { permissions, urlToObject } from "../../../../../../../utils/helper";
 import { useRef } from "react";
 import { useCreateUserMutation } from "../../../../../../../store/userApi";
 import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import useAuth from "../../../../../../../customHooks/useAuth";
-import FileField from "../../../../../../../components/FormFields/FileFeild/FileField";
+import FileField from "../../../../../../../components/FormFields/FileField/FileField";
+import userImage from "../../../../../../../assets/logos/user.png";
 
 const CreateUserForm = () => {
   const {
@@ -41,13 +42,16 @@ const CreateUserForm = () => {
   };
 
   const submitHandler = async (data) => {
-    if (!imageRef.current.files?.[0]) {
-      toast.error("Please select a profile picture.");
+    let image = imageRef.current.files?.[0];
+    if (!image) {
+      image = await urlToObject({
+        imageURL: userImage,
+        fileName: `${new Date().getTime()}.png`,
+      });
     }
-
     const userData = {
       ...data,
-      image: imageRef.current.files?.[0],
+      image: image,
       permissions: permissionRef?.current?.value,
     };
 

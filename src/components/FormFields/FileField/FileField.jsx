@@ -38,7 +38,7 @@ const FileField = forwardRef(
           readOnly={readOnly}
           toggleCropEditor={toggleCropEditor}
         />
-        {openCropEditor ? (
+        {openCropEditor && selectedFile ? (
           <FileCrop
             selectedFile={selectedFile}
             initAspect={1 / 1}
