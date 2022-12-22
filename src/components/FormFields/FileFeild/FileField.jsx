@@ -1,5 +1,4 @@
-import { useEffect, useState, forwardRef } from "react";
-
+import { useState, forwardRef } from "react";
 import { sizeInMB } from "../../../utils/helper";
 import {
   DetailsOuter,
@@ -13,18 +12,15 @@ import FileCrop from "./FileCrop";
 import { EditIcon } from "./FileCrop.style";
 
 const FileField = forwardRef(
-  (
-    { accepts = "", file, readOnly, label = "", onChange = () => {}, ...props },
-    ref
-  ) => {
+  ({ accepts = "", file, readOnly, label = "", ...props }, ref) => {
     const [openCropEditor, setOpenCropEditor] = useState(false);
+    const [selectedFile, setSelectedFile] = useState(file?.[0] || null);
     const toggleCropEditor = () => setOpenCropEditor((current) => !current);
-    const fileName = file?.[0]?.name;
-    useEffect(() => {
-      if (fileName) {
-        toggleCropEditor();
-      }
-    }, [fileName]);
+    const onSelectedFileChange = (e) => {
+      setSelectedFile(e.target.files?.[0]);
+      toggleCropEditor();
+    };
+
     return (
       <>
         <HiddenInput
@@ -35,19 +31,19 @@ const FileField = forwardRef(
           accept={accepts}
           readOnly={readOnly}
           {...props}
-          onChange={onChange}
+          onChange={onSelectedFileChange}
         />
         <MockFileField
-          file={file}
+          selectedFile={selectedFile}
           readOnly={readOnly}
           toggleCropEditor={toggleCropEditor}
         />
         {openCropEditor ? (
           <FileCrop
-            useFile={file?.[0]}
+            selectedFile={selectedFile}
             initAspect={1 / 1}
             toggle={toggleCropEditor}
-            onChange={onChange}
+            setSelectedFile={setSelectedFile}
             name={"file_input"}
           />
         ) : (
@@ -58,8 +54,8 @@ const FileField = forwardRef(
   }
 );
 
-const MockFileField = ({ file, readOnly, toggleCropEditor }) => {
-  const useFile = file?.[0];
+const MockFileField = ({ selectedFile, readOnly, toggleCropEditor }) => {
+  const useFile = selectedFile;
   const openFilePicker = () => document.querySelector("#file_input").click();
   return (
     <>

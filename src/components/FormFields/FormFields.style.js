@@ -40,6 +40,7 @@ export const ImageUploadIcon = styled(BiImageAdd)`
 export const UploadDisplaySectionOuter = styled.section`
   display: flex;
   align-items: center;
+  width: 100%;
   justify-content: space-between;
   .title {
     font-size: 0.8rem;
@@ -61,7 +62,8 @@ export const ImageOuter = styled.div`
   box-sizing: border-box;
   & > img {
     box-sizing: border-box;
-    width: 100%;
+    width: clamp(100px, 100%, 150px);
+    height: clamp(100px, 100%, 150px);
     object-fit: contain;
     border-radius: 0.5rem;
   }

@@ -22,11 +22,11 @@ const CreateUserForm = () => {
     register,
     formState: { errors },
     handleSubmit,
-    watch,
   } = useForm({ mode: "all" });
 
   const [createUser, { isLoading, isError }] = useCreateUserMutation();
   const permissionRef = useRef();
+  const imageRef = useRef();
   const navigate = useNavigate();
   const { getAuthData } = useAuth();
 
@@ -40,12 +40,14 @@ const CreateUserForm = () => {
     setViewOnly(false);
   };
 
-  console.log("The image => ", watch("image"));
-
   const submitHandler = async (data) => {
+    if (!imageRef.current.files?.[0]) {
+      toast.error("Please select a profile picture.");
+    }
+
     const userData = {
       ...data,
-      image: data?.image[0],
+      image: imageRef.current.files?.[0],
       permissions: permissionRef?.current?.value,
     };
 
@@ -172,13 +174,7 @@ const CreateUserForm = () => {
               <FileField
                 readOnly={viewOnly}
                 accepts="image/png, image/jpg, image/jpeg"
-                file={watch("image")}
-                {...register("image", {
-                  required: {
-                    value: true,
-                    message: "User image is required",
-                  },
-                })}
+                ref={imageRef}
               />
               {errors?.image?.message ? (
                 <Error>{errors?.image?.message}</Error>

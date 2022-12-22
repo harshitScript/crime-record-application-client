@@ -16,20 +16,23 @@ const aspectRatios = [
 ];
 
 const FileCrop = ({
-  useFile,
+  selectedFile,
   initAspect = 1 / 1,
   initCrop = { x: 0, y: 0 },
   initZoom = 1,
   toggle = () => {},
-  onChange = () => {},
-  name = "",
+  setSelectedFile = () => {},
 }) => {
   const [crop, setCrop] = useState(initCrop);
   const [zoom, setZoom] = useState(initZoom);
   const [aspect, setAspect] = useState(initAspect);
   const [croppedAreaPixels, setCroppedAreaPixels] = useState(null);
 
-  const imageURL = useMemo(() => URL.createObjectURL(useFile), [useFile.name]);
+  const imageURL = useMemo(
+    () => URL.createObjectURL(selectedFile),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [selectedFile?.name]
+  );
 
   const { theme } = useTheme();
 
@@ -39,14 +42,12 @@ const FileCrop = ({
     e.stopPropagation();
     try {
       const croppedImageURL = await getCroppedImg(imageURL, croppedAreaPixels);
-      const file = await urlToObject({
+      const croppedFile = await urlToObject({
         imageURL: croppedImageURL,
         fileName: `${new Date().getTime()}.jpg`,
       });
-      const event = { target: {} };
-      event.target.files = [file];
-      event.target.name = name;
-      onChange(event);
+
+      setSelectedFile(croppedFile);
       toggle();
     } catch (error) {
       toast.error("Failed to crop image please retry.");
