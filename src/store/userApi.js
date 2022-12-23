@@ -35,6 +35,12 @@ const userApi = createApi({
         url: `user/list/${page}`,
       }),
     }),
+    deleteUser: builder.mutation({
+      query: ({ userId }) => ({
+        url: `user/${userId}/delete`,
+        method: "DELETE",
+      }),
+    }),
   }),
 });
 
@@ -43,6 +49,7 @@ export const {
   useCreateUserMutation,
   useLoginUserMutation,
   useListUserQuery,
+  useDeleteUserMutation,
 } = userApi;
 
 export default userApi;

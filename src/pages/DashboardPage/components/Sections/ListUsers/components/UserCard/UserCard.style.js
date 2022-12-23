@@ -1,5 +1,6 @@
 import styled from "styled-components/macro";
 import { BsFillTrashFill } from "react-icons/bs";
+import { RiLoader4Fill } from "react-icons/ri";
 import { Card } from "../../../../../../../components/Cards/Card";
 
 export const CardOuter = styled(Card)`
@@ -85,6 +86,14 @@ export const Option = styled.div`
 `;
 
 export const TrashIcon = styled(BsFillTrashFill)`
+  color: ${({ primaryColor }) => primaryColor};
+  cursor: pointer;
+  position: absolute;
+  top: -130px;
+  right: 5px;
+`;
+
+export const TrashLoader = styled(RiLoader4Fill)`
   color: ${({ primaryColor }) => primaryColor};
   cursor: pointer;
   position: absolute;

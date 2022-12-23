@@ -10,10 +10,10 @@ import {
   Option,
   Permissions,
   RelativeOuter,
-  TrashIcon,
 } from "./UserCard.style";
 import { HiChevronDoubleDown, HiChevronDoubleUp } from "react-icons/hi";
 import InvisibleBackdrop from "../../../../../../../components/InvisibleBackdrop";
+import DeleteIcon from "../DeleteIcon/DeleteIcon";
 
 const UserCard = ({ user }) => {
   return (
@@ -25,15 +25,9 @@ const UserCard = ({ user }) => {
 };
 
 const DetailsSection = ({ user }) => {
-  const deleteClickHandler = () => {};
-
   return (
     <Main>
-      {user.permissions.includes("root") ? (
-        <></>
-      ) : (
-        <TrashIcon onClick={deleteClickHandler} />
-      )}
+      <DeleteIcon user={user} />
       <TitleSm>{user?.name}</TitleSm>
       <SubTitleSm>{user?.email}</SubTitleSm>
       <SubTitleSm>{user?.mobile}</SubTitleSm>
