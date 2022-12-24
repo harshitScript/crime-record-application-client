@@ -3,6 +3,7 @@ import styled from "styled-components/macro";
 import { TitleMd } from "../../../../../components/Typography/Title";
 import { SubTitleMd } from "../../../../../components/Typography/SubTitle";
 import CreateRecordForm from "./components/CreateRecordForm/CreateRecordForm";
+
 const CreateRecord = () => {
   return (
     <>
