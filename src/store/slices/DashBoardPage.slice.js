@@ -4,14 +4,23 @@ const dashboardSlice = createSlice({
   name: "dashboard",
   initialState: {
     createRecordForm: {
-      identityForm: {},
+      formData: {
+        identityForm: {},
+        locationForm: {},
+      },
       activeSection: "identity",
     },
   },
   reducers: {
     setIdentityFormData: (state, { payload }) => {
-      state.createRecordForm.identityForm = {
+      state.createRecordForm.formData.identityForm = {
         ...state.createRecordForm.identityForm,
+        ...payload,
+      };
+    },
+    setLocationFormData: (state, { payload }) => {
+      state.createRecordForm.formData.locationForm = {
+        ...state.createRecordForm.locationForm,
         ...payload,
       };
     },
@@ -21,6 +30,7 @@ const dashboardSlice = createSlice({
   },
 });
 
-export const { setIdentityFormData, setActiveSection } = dashboardSlice.actions;
+export const { setIdentityFormData, setActiveSection, setLocationFormData } =
+  dashboardSlice.actions;
 
 export default dashboardSlice;

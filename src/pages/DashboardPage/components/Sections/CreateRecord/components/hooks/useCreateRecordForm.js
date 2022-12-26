@@ -8,25 +8,40 @@ import {
 const useCreateRecordForm = () => {
   const dispatch = useDispatch();
   const {
-    createRecordForm: { activeSection, identityForm: identityFormData },
+    createRecordForm: {
+      activeSection,
+      formData: {
+        identityForm: identityFormData,
+        locationForm: locationFormData,
+      },
+    },
   } = useSelector(({ dashboard }) => dashboard);
-
-  const saveIdentityForm = (data = {}) => {
-    dispatch(setIdentityFormData(data));
-  };
 
   const navigateTo = (section = "") => {
     dispatch(setActiveSection(section));
   };
 
+  //* Takes form to viewport
   useEffect(() => {
     document.getElementById(activeSection).scrollIntoView();
   }, [activeSection]);
 
+  //* Form savers
+  const saveIdentityForm = (data = {}) => {
+    dispatch(setIdentityFormData(data));
+    navigateTo("location");
+  };
+  const saveLocationForm = (data = {}) => {
+    dispatch(setIdentityFormData(data));
+    navigateTo("location");
+  };
+
   return {
     activeSection,
     identityFormData,
+    locationFormData,
     saveIdentityForm,
+    saveLocationForm,
     navigateTo,
   };
 };

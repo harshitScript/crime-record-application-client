@@ -3,11 +3,11 @@ import { Card } from "../../../../../../../components/Cards/Card";
 
 export const HorizontalScroll = styled.section`
   display: flex;
-  align-items: center;
+  align-items: flex-start;
+  gap: 1rem;
   justify-content: space-between;
   width: 100%;
   overflow-x: auto;
-  min-height: 250px;
   box-sizing: border-box;
   scroll-behavior: smooth;
   & > form {

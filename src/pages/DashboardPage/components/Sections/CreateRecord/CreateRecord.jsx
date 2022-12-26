@@ -10,7 +10,7 @@ const CreateRecord = () => {
       <StickyCard>
         <TitleMd>Create Criminal Record</TitleMd>
         <SubTitleMd>
-          create a new criminal record will all the available data.
+          create a new criminal record with all the available data.
         </SubTitleMd>
       </StickyCard>
       <CreateRecordForm />
