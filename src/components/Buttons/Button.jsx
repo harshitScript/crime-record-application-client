@@ -1,7 +1,13 @@
 import styled from "styled-components/macro";
 import useTheme from "../../customHooks/useTheme";
 import { MdWbTwighlight } from "react-icons/md";
-const Button = ({ children, loader = false, fullWidth = false, ...props }) => {
+const Button = ({
+  children,
+  loader = false,
+  fullWidth = false,
+  disabled = false,
+  ...props
+}) => {
   const { theme } = useTheme();
 
   return (

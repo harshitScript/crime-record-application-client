@@ -13,6 +13,17 @@ export const TextField = styled.input`
   padding: 0 0.5rem;
   color: ${({ primaryColor }) => primaryColor};
 `;
+export const TextArea = styled.textarea`
+  width: 100%;
+  outline: unset;
+  box-sizing: border-box;
+  border: unset;
+  border-radius: 0.5rem;
+  border-bottom: 0.3rem solid ${({ secondaryColor }) => secondaryColor};
+  font-size: 0.7rem;
+  padding: 0 0.5rem;
+  color: ${({ primaryColor }) => primaryColor};
+`;
 
 export const HiddenInput = styled.input`
   display: none;

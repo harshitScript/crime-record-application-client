@@ -59,8 +59,11 @@ const LocationForm = () => {
                 value: true,
                 message: "City is required",
               },
+              pattern: {
+                value: /^[a-zA-Z\s]*$/,
+                message: "Invalid state name.",
+              },
             })}
-            readOnly
           />
           {errors?.city?.message ? (
             <Error>{errors?.city?.message}</Error>
@@ -76,8 +79,11 @@ const LocationForm = () => {
                 value: true,
                 message: "state is required",
               },
+              pattern: {
+                value: /^[a-zA-Z\s]*$/,
+                message: "Invalid state name.",
+              },
             })}
-            readOnly
           />
           {errors?.state?.message ? (
             <Error>{errors?.state?.message}</Error>
