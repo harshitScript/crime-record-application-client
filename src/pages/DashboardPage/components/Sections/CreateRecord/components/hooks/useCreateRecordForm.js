@@ -1,16 +1,28 @@
 import { useEffect } from "react";
+import { toast } from "react-hot-toast";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { useCreateRecordMutation } from "../../../../../../../store/recordApi";
 import {
   setActiveSection,
   setCrimesFormData,
   setIdentityFormData,
+  setLocationFormData,
 } from "../../../../../../../store/slices/DashBoardPage.slice";
 const formSequence = ["identity", "location", "crimes"];
 const useCreateRecordForm = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const [triggerCreateRecord, { isLoading }] = useCreateRecordMutation();
+
   const {
     createRecordForm: { activeSection, formData },
   } = useSelector(({ dashboard }) => dashboard);
+
+  const allFormDataReceived = formSequence.every(
+    (form) => Object.keys(formData?.[form]).length
+  );
 
   const navigateTo = (section = "") => {
     dispatch(setActiveSection(section));
@@ -21,35 +33,37 @@ const useCreateRecordForm = () => {
     document.getElementById(activeSection).scrollIntoView();
   }, [activeSection]);
 
+  const submitCreateRecordForm = () => {
+    if (allFormDataReceived) {
+      triggerCreateRecord({
+        body: {
+          ...formData?.identity,
+          ...formData?.location,
+          ...formData?.crimes,
+        },
+      }).then((response) => {
+        if (response.error) {
+          toast.error("Failed to create record.");
+        } else {
+          toast.success("Record created successfully.");
+          navigate("/dashboard/list-records");
+        }
+      });
+    }
+  };
+
   //* Form savers
   const saveIdentityForm = (data = {}) => {
-    dispatch(setIdentityFormData(data));
+    const tempData = { ...data, name: `${data?.firstName} ${data?.lastName}` };
+    dispatch(setIdentityFormData(tempData));
     navigateTo("location");
   };
   const saveLocationForm = (data = {}) => {
-    dispatch(setIdentityFormData(data));
+    dispatch(setLocationFormData(data));
     navigateTo("crimes");
   };
   const saveCrimesForm = (data = {}) => {
     dispatch(setCrimesFormData(data));
-  };
-
-  const formStateGenerator = (formName = "") => {
-    const formState = {};
-    formSequence.forEach((form, index) => {
-      if (index === 0) {
-        formState[form] = "active";
-        return;
-      } else {
-        //* Check if previous form data is available or not.
-        return (formState[form] = Object.keys(
-          formData?.[formSequence[index - 1]]
-        ).length
-          ? "active"
-          : "disabled");
-      }
-    });
-    return formState?.[formName];
   };
 
   return {
@@ -58,11 +72,13 @@ const useCreateRecordForm = () => {
     locationFormData: formData?.location,
     crimesFormData: formData?.crimes,
     formSequence,
-    formStateGenerator,
     saveIdentityForm,
     saveLocationForm,
     saveCrimesForm,
+    submitCreateRecordForm,
     navigateTo,
+    allFormDataReceived,
+    isLoading,
   };
 };
 

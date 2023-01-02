@@ -30,6 +30,7 @@ export const SmallTitle = styled(TitleSm)`
 export const SmallSubTitle = styled(SubTitleSm)`
   text-align: left;
   word-break: break-word;
+  margin: 0.5rem 0;
 `;
 
 export const MiddleSubTitle = styled(SubTitleMd)`

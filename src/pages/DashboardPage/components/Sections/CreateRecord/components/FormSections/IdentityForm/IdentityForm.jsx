@@ -11,7 +11,7 @@ import useCreateRecordForm from "../../hooks/useCreateRecordForm";
 import { FlexBox } from "./IdentityForm.style";
 
 const IdentityForm = () => {
-  const { saveIdentityForm } = useCreateRecordForm();
+  const { saveIdentityForm, isLoading } = useCreateRecordForm();
   const {
     register,
     formState: { errors },
@@ -112,7 +112,9 @@ const IdentityForm = () => {
           </Box>
           <ButtonGroup>
             <span></span>
-            <Button type="submit">Next</Button>
+            <Button type="submit" loader={isLoading}>
+              Continue
+            </Button>
           </ButtonGroup>
         </FormSectionCard>
       </form>

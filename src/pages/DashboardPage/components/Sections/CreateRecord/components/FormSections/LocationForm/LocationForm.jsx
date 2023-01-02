@@ -11,7 +11,7 @@ import {
 import useCreateRecordForm from "../../hooks/useCreateRecordForm";
 
 const LocationForm = () => {
-  const { saveLocationForm } = useCreateRecordForm();
+  const { saveLocationForm, isLoading } = useCreateRecordForm();
   const {
     register,
     handleSubmit,
@@ -117,7 +117,9 @@ const LocationForm = () => {
         </Box>
         <ButtonGroup>
           <BorderedButton>Back</BorderedButton>
-          <Button type="submit">Next</Button>
+          <Button type="submit" loader={isLoading}>
+            Continue
+          </Button>
         </ButtonGroup>
       </FormSectionCard>
     </form>

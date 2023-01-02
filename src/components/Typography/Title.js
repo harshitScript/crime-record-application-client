@@ -5,6 +5,7 @@ export const TitleLg = styled.h1`
   text-align: center;
   color: ${({ secondaryColor }) => secondaryColor};
   margin: unset;
+  word-break: break-word;
 `;
 export const TitleMd = styled.h1`
   font-size: 1.5rem;
@@ -12,6 +13,7 @@ export const TitleMd = styled.h1`
   text-align: center;
   color: ${({ secondaryColor }) => secondaryColor};
   margin: unset;
+  word-break: break-word;
 `;
 export const TitleSm = styled.h1`
   font-size: 1.1rem;
@@ -19,4 +21,5 @@ export const TitleSm = styled.h1`
   text-align: center;
   color: ${({ secondaryColor }) => secondaryColor};
   margin: unset;
+  word-break: break-word;
 `;

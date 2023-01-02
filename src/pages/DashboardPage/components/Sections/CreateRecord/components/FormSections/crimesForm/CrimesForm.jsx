@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+import { toast } from "react-hot-toast";
 import { Box } from "../../../../../../../../components/Box/Box";
 import BorderedButton from "../../../../../../../../components/Buttons/BorderedButton";
 import Button from "../../../../../../../../components/Buttons/Button";
@@ -17,7 +18,7 @@ import CrimeEntriesDisplay from "./CrimeEntries/CrimeEntriesDisplay";
 import { FlexBox } from "./CrimesForm.style";
 
 const CrimesForm = () => {
-  const { saveCrimesForm } = useCreateRecordForm();
+  const { saveCrimesForm, isLoading } = useCreateRecordForm();
   const [entries, setEntries] = useState([]);
   const {
     register,
@@ -46,7 +47,11 @@ const CrimesForm = () => {
     setEntries(updatedEntires);
   };
   const submitHandler = () => {
-    saveCrimesForm({ crimes: entries });
+    if (entries.length) {
+      saveCrimesForm({ crimes: entries });
+    } else {
+      toast.error("Please add at-least one entry.");
+    }
   };
   return (
     <>
@@ -174,7 +179,9 @@ const CrimesForm = () => {
         )}
         <ButtonGroup>
           <BorderedButton>Back</BorderedButton>
-          <Button onClick={submitHandler}>Submit</Button>
+          <Button onClick={submitHandler} loader={isLoading}>
+            Continue
+          </Button>
         </ButtonGroup>
       </FormSectionCard>
     </>

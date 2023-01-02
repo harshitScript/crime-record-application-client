@@ -3,12 +3,12 @@ import { SubTitleSm } from "../../../../../../../components/Typography/SubTitle"
 import { TitleSm } from "../../../../../../../components/Typography/Title";
 import {
   CardOuter,
-  CriminalDDBody,
-  CriminalDDHeader,
   Image,
   Main,
   Option,
   Permissions,
+  RecordDDBody,
+  RecordDDHeader,
   RelativeOuter,
 } from "./UserCard.style";
 import { HiChevronDoubleDown, HiChevronDoubleUp } from "react-icons/hi";
@@ -32,33 +32,33 @@ const DetailsSection = ({ user }) => {
       <SubTitleSm>{user?.email}</SubTitleSm>
       <SubTitleSm>{user?.mobile}</SubTitleSm>
       <Permissions>{user?.permissions?.join(", ")}</Permissions>
-      <CriminalsListDropDown rawCriminalsList={user?.criminalsList} />
+      <RecordsDropDown rawCriminalsList={user?.criminalsList} />
     </Main>
   );
 };
 
-const CriminalsListDropDown = ({ rawCriminalsList }) => {
+const RecordsDropDown = ({ rawCriminalsList }) => {
   const [show, setShow] = useState(false);
   const toggle = () => setShow((current) => !current);
   const recordsFound = !!rawCriminalsList?.length;
   return (
     <RelativeOuter>
-      <CriminalDDHeader
+      <RecordDDHeader
         onClick={recordsFound ? toggle : () => {}}
         active={recordsFound}
       >
         <span>Records</span>
         {show ? <HiChevronDoubleUp /> : <HiChevronDoubleDown />}
-      </CriminalDDHeader>
+      </RecordDDHeader>
       {show ? (
         <>
           <InvisibleBackdrop onClick={toggle} />
-          <CriminalDDBody>
+          <RecordDDBody>
             <Option title={"Click to copy record's uid."}>
               <span>Criminal Name</span>
               <code>random-uid</code>
             </Option>
-          </CriminalDDBody>
+          </RecordDDBody>
         </>
       ) : (
         <></>

@@ -28,7 +28,7 @@ const dashboardSlice = createSlice({
     setCrimesFormData: (state, { payload }) => {
       state.createRecordForm.formData.crimes = {
         ...state.createRecordForm.formData.crimes,
-        payload,
+        ...payload,
       };
     },
     setActiveSection: (state, { payload }) => {
