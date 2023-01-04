@@ -27,6 +27,10 @@ const FileCrop = ({
   const [zoom, setZoom] = useState(initZoom);
   const [aspect, setAspect] = useState(initAspect);
   const [croppedAreaPixels, setCroppedAreaPixels] = useState(null);
+  const initialFiletype = useMemo(
+    () => selectedFile?.type?.split("/")?.[1],
+    [selectedFile]
+  );
 
   const imageURL = useMemo(
     () => URL.createObjectURL(selectedFile),
@@ -44,7 +48,7 @@ const FileCrop = ({
       const croppedImageURL = await getCroppedImg(imageURL, croppedAreaPixels);
       const croppedFile = await urlToObject({
         imageURL: croppedImageURL,
-        fileName: `${new Date().getTime()}.jpg`,
+        fileName: `${new Date().getTime()}.${initialFiletype}`,
       });
 
       setSelectedFile(croppedFile);

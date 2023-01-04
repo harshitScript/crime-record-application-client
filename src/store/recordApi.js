@@ -19,9 +19,20 @@ const recordApi = createApi({
     getRecords: builder.query({
       query: ({ page }) => `/record/list/${page}`,
     }),
+    uploadRecordImage: builder.mutation({
+      query: ({ body, recordId, type }) => ({
+        url: `record/${recordId}/uploads/${type}`,
+        body,
+        method: "POST",
+      }),
+    }),
   }),
 });
 
-export const { useCreateRecordMutation, useGetRecordsQuery } = recordApi;
+export const {
+  useCreateRecordMutation,
+  useGetRecordsQuery,
+  useUploadRecordImageMutation,
+} = recordApi;
 
 export default recordApi;
