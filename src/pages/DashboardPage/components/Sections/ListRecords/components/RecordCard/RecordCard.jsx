@@ -1,29 +1,49 @@
+import Button from "../../../../../../../components/Buttons/Button";
 import {
   SubTitleMd,
   SubTitleSm,
 } from "../../../../../../../components/Typography/SubTitle";
 import { TitleMd } from "../../../../../../../components/Typography/Title";
+import useRecord from "../../../../../../../customHooks/useRecord";
+import FailedRecordCard from "./FailedRecordCard/FailedRecordCard";
 import ImageSection from "./ImageSection/ImageSection";
 import ListCrimes from "./ListCrimes/ListCrimes";
+import LoadingRecord from "./LoadingRecord/LoadingRecord";
 import { OuterCard } from "./RecordCard.style";
 
-const RecordCard = ({ record }) => {
+const RecordCard = ({ recordId }) => {
+  const { recordData, recordDataError, recordDataRefetch, recordDataLoading } =
+    useRecord({ recordId });
+
+  if (recordDataLoading) {
+    return <LoadingRecord />;
+  }
+
+  if (recordDataError) {
+    return <FailedRecordCard refetch={recordDataRefetch} recordId={recordId} />;
+  }
+
+  console.log("The recordData => ", recordData);
+
   return (
     <OuterCard>
       <section className="first-section">
-        <ImageSection recordId={record?._id} imageData={record?.imageData} />
+        <ImageSection
+          recordId={recordData?._id}
+          imageData={recordData?.imageData}
+        />
       </section>
       <section className="second-section">
-        <TitleMd>{record?.name}</TitleMd>
+        <TitleMd>{recordData?.name}</TitleMd>
         <hr />
         <SubTitleSm>
-          {record?.mobile},{record?.address}
+          {recordData?.mobile},{recordData?.address}
         </SubTitleSm>
         <SubTitleMd>
-          {record?.city}, {record?.state}
+          {recordData?.city}, {recordData?.state}
         </SubTitleMd>
         <hr />
-        <ListCrimes crimesList={record?.crimes} />
+        <ListCrimes crimesList={recordData?.crimes} />
       </section>
     </OuterCard>
   );

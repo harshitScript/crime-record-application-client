@@ -10,8 +10,6 @@ const RenderUsers = () => {
     useUsers();
   const navigate = useNavigate();
 
-  console.log("The users data => ", usersData);
-
   if (usersDataLoading) return <FullScreenLoader />;
   if (usersDataError)
     return (

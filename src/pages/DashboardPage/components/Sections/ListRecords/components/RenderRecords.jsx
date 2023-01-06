@@ -5,15 +5,15 @@ import useRecords from "../../../../../../customHooks/useRecords";
 import RecordCard from "./RecordCard/RecordCard";
 
 const RenderRecords = () => {
-  const { recordsData, recordsLoading, recordsError, recordsRefetch } =
+  const { recordsIdData, recordsIdLoading, recordsIdError, recordsIdRefetch } =
     useRecords({});
   const navigate = useNavigate();
 
-  if (recordsLoading) return <FullScreenLoader />;
-  if (recordsError)
+  if (recordsIdLoading) return <FullScreenLoader />;
+  if (recordsIdError)
     return (
       <FullScreenError
-        refetch={recordsRefetch}
+        refetch={recordsIdRefetch}
         title="Failed to fetch records please retry."
         back={navigate.bind(null, "/dashboard")}
       />
@@ -21,8 +21,8 @@ const RenderRecords = () => {
 
   return (
     <>
-      {recordsData.map((record) => (
-        <RecordCard key={record?._id} record={record} />
+      {recordsIdData.map((rawObj) => (
+        <RecordCard key={rawObj?._id} recordId={rawObj?._id} />
       ))}
     </>
   );

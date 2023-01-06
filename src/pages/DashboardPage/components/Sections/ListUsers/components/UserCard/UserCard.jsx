@@ -25,6 +25,7 @@ const UserCard = ({ user }) => {
 };
 
 const DetailsSection = ({ user }) => {
+  console.log("The user => ", user);
   return (
     <Main>
       <DeleteIcon user={user} />
@@ -32,15 +33,15 @@ const DetailsSection = ({ user }) => {
       <SubTitleSm>{user?.email}</SubTitleSm>
       <SubTitleSm>{user?.mobile}</SubTitleSm>
       <Permissions>{user?.permissions?.join(", ")}</Permissions>
-      <RecordsDropDown rawCriminalsList={user?.criminalsList} />
+      <RecordsDropDown records={user?.records} />
     </Main>
   );
 };
 
-const RecordsDropDown = ({ rawCriminalsList }) => {
+const RecordsDropDown = ({ records }) => {
   const [show, setShow] = useState(false);
   const toggle = () => setShow((current) => !current);
-  const recordsFound = !!rawCriminalsList?.length;
+  const recordsFound = !!records?.length;
   return (
     <RelativeOuter>
       <RecordDDHeader

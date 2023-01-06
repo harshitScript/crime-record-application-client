@@ -16,7 +16,7 @@ export const TitleMd = styled.h1`
   word-break: break-word;
 `;
 export const TitleSm = styled.h1`
-  font-size: 1.1rem;
+  font-size: 1rem;
   font-weight: bold;
   text-align: center;
   color: ${({ secondaryColor }) => secondaryColor};

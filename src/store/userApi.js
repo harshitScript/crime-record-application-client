@@ -34,6 +34,7 @@ const userApi = createApi({
       query: ({ page }) => ({
         url: `user/list/${page}`,
       }),
+      providesTags: ["user"],
     }),
     deleteUser: builder.mutation({
       query: ({ userId }) => ({

@@ -1,8 +1,12 @@
 import { toast } from "react-hot-toast";
-import { useDeleteUserMutation } from "../../../../../../../store/userApi";
+import { useDispatch } from "react-redux";
+import userApi, {
+  useDeleteUserMutation,
+} from "../../../../../../../store/userApi";
 import { TrashIcon, TrashLoader } from "../UserCard/UserCard.style";
 
 const DeleteIcon = ({ user = {} }) => {
+  const dispatch = useDispatch();
   const [triggerDeletion, { isLoading }] = useDeleteUserMutation();
   const deleteClickHandler = async () => {
     try {
@@ -11,6 +15,7 @@ const DeleteIcon = ({ user = {} }) => {
         throw new Error();
       }
       toast.success("User Deleted successfully.");
+      dispatch(userApi.util.invalidateTags(["user"]));
     } catch {
       toast.error("Failed to delete user.");
     }

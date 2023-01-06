@@ -1,4 +1,4 @@
-import { useGetRecordsQuery } from "../store/recordApi";
+import { useGetRecordsIdQuery } from "../store/recordApi";
 
 const useRecords = () => {
   const {
@@ -6,20 +6,20 @@ const useRecords = () => {
     isLoading,
     isFetching,
     isUninitialized,
-    isError: recordsError,
-    refetch: recordsRefetch,
-  } = useGetRecordsQuery({ page: 1 });
+    isError: recordsIdError,
+    refetch: recordsIdRefetch,
+  } = useGetRecordsIdQuery({ page: 1 });
 
-  const recordsData = data?.records;
-  const recordsExits = !recordsData;
-  const recordsLoading = isLoading || isFetching || isUninitialized;
+  const recordsIdData = data?.recordsId;
+  const recordsIdExits = !recordsIdData;
+  const recordsIdLoading = isLoading || isFetching || isUninitialized;
 
   return {
-    recordsData,
-    recordsLoading,
-    recordsExits,
-    recordsError,
-    recordsRefetch,
+    recordsIdData,
+    recordsIdLoading,
+    recordsIdExits,
+    recordsIdError,
+    recordsIdRefetch,
   };
 };
 export default useRecords;

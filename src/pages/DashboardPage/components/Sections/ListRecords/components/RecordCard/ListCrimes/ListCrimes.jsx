@@ -31,7 +31,7 @@ const ListCrimes = ({ crimesList = [] }) => {
           <InvisibleBackdrop onClick={toggle} />
           <CrimesDDBody>
             {crimesList?.map((crime) => (
-              <Crime crime={crime} />
+              <Crime crime={crime} key={crime?.dateAndTime} />
             ))}
           </CrimesDDBody>
         </>

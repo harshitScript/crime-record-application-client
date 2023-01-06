@@ -16,8 +16,8 @@ const recordApi = createApi({
         method: "POST",
       }),
     }),
-    getRecords: builder.query({
-      query: ({ page }) => `/record/list/${page}`,
+    getRecordsId: builder.query({
+      query: ({ page }) => `/record/list-ids/${page}`,
     }),
     uploadRecordImage: builder.mutation({
       query: ({ body, recordId, type }) => ({
@@ -26,13 +26,19 @@ const recordApi = createApi({
         method: "POST",
       }),
     }),
+    getRecordInfo: builder.query({
+      query: ({ recordId }) => ({
+        url: `record/${recordId}`,
+      }),
+    }),
   }),
 });
 
 export const {
   useCreateRecordMutation,
-  useGetRecordsQuery,
+  useGetRecordsIdQuery,
   useUploadRecordImageMutation,
+  useGetRecordInfoQuery,
 } = recordApi;
 
 export default recordApi;
