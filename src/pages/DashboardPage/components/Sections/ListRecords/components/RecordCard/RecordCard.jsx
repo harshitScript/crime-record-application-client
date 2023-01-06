@@ -1,4 +1,3 @@
-import Button from "../../../../../../../components/Buttons/Button";
 import {
   SubTitleMd,
   SubTitleSm,
@@ -22,8 +21,6 @@ const RecordCard = ({ recordId }) => {
   if (recordDataError) {
     return <FailedRecordCard refetch={recordDataRefetch} recordId={recordId} />;
   }
-
-  console.log("The recordData => ", recordData);
 
   return (
     <OuterCard>
