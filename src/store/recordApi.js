@@ -31,6 +31,12 @@ const recordApi = createApi({
         url: `record/${recordId}`,
       }),
     }),
+    deleteRecordImage: builder.mutation({
+      query: ({ recordId, type }) => ({
+        url: `/record/${recordId}/delete-image/${type}`,
+        method: "DELETE",
+      }),
+    }),
   }),
 });
 
@@ -39,6 +45,7 @@ export const {
   useGetRecordsIdQuery,
   useUploadRecordImageMutation,
   useGetRecordInfoQuery,
+  useDeleteRecordImageMutation,
 } = recordApi;
 
 export default recordApi;

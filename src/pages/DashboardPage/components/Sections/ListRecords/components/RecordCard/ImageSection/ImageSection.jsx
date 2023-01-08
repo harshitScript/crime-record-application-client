@@ -1,21 +1,43 @@
 import AddImage from "./AddImage/AddImage";
-import { RecordImage } from "./ImageSection.style";
+import DisplayImage from "./DisplayImage/DisplayImage";
 
-const ImageSection = ({ recordId = "", imageData = {} }) => {
+const ImageSection = ({
+  recordId = "",
+  imageData = {},
+  recordDataRefetch = () => {},
+}) => {
   const imageUrls = imageData?.urls;
   const front = imageUrls?.front;
   const side = imageUrls?.side;
   return (
     <>
       {front ? (
-        <RecordImage src={front} alt="Front-Face" loading="lazy" />
+        <DisplayImage
+          url={front}
+          type={"front"}
+          recordId={recordId}
+          recordDataRefetch={recordDataRefetch}
+        />
       ) : (
-        <AddImage type="front" recordId={recordId} />
+        <AddImage
+          type="front"
+          recordId={recordId}
+          recordDataRefetch={recordDataRefetch}
+        />
       )}
       {side ? (
-        <RecordImage src={side} alt="Side-Face" loading="lazy" />
+        <DisplayImage
+          url={side}
+          type={"side"}
+          recordId={recordId}
+          recordDataRefetch={recordDataRefetch}
+        />
       ) : (
-        <AddImage type="side" recordId={recordId} />
+        <AddImage
+          type="side"
+          recordId={recordId}
+          recordDataRefetch={recordDataRefetch}
+        />
       )}
     </>
   );

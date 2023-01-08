@@ -14,6 +14,7 @@ export const OuterCard = styled(Card)`
     min-height: 150px;
     display: flex;
     align-items: center;
+    justify-content: space-between;
   }
 
   .second-section {

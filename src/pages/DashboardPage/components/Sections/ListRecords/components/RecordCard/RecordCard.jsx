@@ -28,6 +28,7 @@ const RecordCard = ({ recordId }) => {
         <ImageSection
           recordId={recordData?._id}
           imageData={recordData?.imageData}
+          recordDataRefetch={recordDataRefetch}
         />
       </section>
       <section className="second-section">

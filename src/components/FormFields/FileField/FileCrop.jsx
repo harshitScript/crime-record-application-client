@@ -11,8 +11,8 @@ import { urlToObject } from "../../../utils/helper";
 
 const aspectRatios = [
   { label: "1:1", code: 1 / 1 },
-  { label: "4:3", code: 4 / 3 },
-  { label: "16:9", code: 16 / 9 },
+  /* { label: "4:3", code: 4 / 3 },
+  { label: "16:9", code: 16 / 9 }, */
 ];
 
 const FileCrop = ({

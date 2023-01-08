@@ -10,7 +10,11 @@ import FileCrop from "../../../../../../../../../components/FormFields/FileField
 import { useUploadRecordImageMutation } from "../../../../../../../../../store/recordApi";
 import { toast } from "react-hot-toast";
 
-const AddImage = ({ type = "front", recordId = "" }) => {
+const AddImage = ({
+  type = "front",
+  recordId = "",
+  recordDataRefetch = () => {},
+}) => {
   const id = `file_input-${type}`;
 
   const [triggerUploadImage, { isLoading }] = useUploadRecordImageMutation();
@@ -35,10 +39,15 @@ const AddImage = ({ type = "front", recordId = "" }) => {
         type,
         body: formData,
       });
+      if (response?.error) {
+        throw new Error();
+      }
 
       toast.success(response?.data?.message, {
         position: "top-center",
       });
+
+      recordDataRefetch();
     } catch {
       toast.error("Failed to upload the image.", {
         position: "top-center",
