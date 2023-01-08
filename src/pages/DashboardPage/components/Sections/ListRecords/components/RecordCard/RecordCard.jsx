@@ -8,6 +8,7 @@ import FailedRecordCard from "./FailedRecordCard/FailedRecordCard";
 import ImageSection from "./ImageSection/ImageSection";
 import ListCrimes from "./ListCrimes/ListCrimes";
 import LoadingRecord from "./LoadingRecord/LoadingRecord";
+import RecordActions from "./RecordActions/RecordActions";
 import { OuterCard } from "./RecordCard.style";
 
 const RecordCard = ({ recordId }) => {
@@ -40,6 +41,8 @@ const RecordCard = ({ recordId }) => {
         <SubTitleMd>
           {recordData?.city}, {recordData?.state}
         </SubTitleMd>
+        <hr />
+        <RecordActions copyText={recordId} />
         <hr />
         <ListCrimes crimesList={recordData?.crimes} />
       </section>
