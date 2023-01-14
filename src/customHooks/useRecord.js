@@ -1,4 +1,9 @@
-import { useGetRecordInfoQuery } from "../store/recordApi";
+import {
+  useDeleteRecordImageMutation,
+  useDeleteRecordMutation,
+  useGetRecordInfoQuery,
+  useUploadRecordImageMutation,
+} from "../store/recordApi";
 
 const useRecord = ({ recordId }) => {
   const {
@@ -8,7 +13,15 @@ const useRecord = ({ recordId }) => {
     isUninitialized,
     isError: recordDataError,
     refetch: recordDataRefetch,
-  } = useGetRecordInfoQuery({ recordId });
+  } = useGetRecordInfoQuery({ recordId }, { skip: !recordId });
+
+  const [triggerDeleteRecord, deleteRecordQuery] = useDeleteRecordMutation();
+
+  const [triggerDeleteImage, { isLoading: deleteRecordImageLoading }] =
+    useDeleteRecordImageMutation();
+
+  const [triggerUploadImage, { isLoading: uploadRecordImageLoading }] =
+    useUploadRecordImageMutation();
 
   const recordData = data?.record;
   const recordDataExist = !!recordData;
@@ -20,6 +33,12 @@ const useRecord = ({ recordId }) => {
     recordDataLoading,
     recordDataError,
     recordDataRefetch,
+    triggerDeleteRecord,
+    deleteRecordQuery,
+    triggerDeleteImage,
+    deleteRecordImageLoading,
+    triggerUploadImage,
+    uploadRecordImageLoading,
   };
 };
 export default useRecord;

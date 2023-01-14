@@ -7,8 +7,8 @@ import {
 import { BiImageAdd } from "react-icons/bi";
 import { useState } from "react";
 import FileCrop from "../../../../../../../../../components/FormFields/FileField/FileCrop";
-import { useUploadRecordImageMutation } from "../../../../../../../../../store/recordApi";
 import { toast } from "react-hot-toast";
+import useRecord from "../../../../../../../../../customHooks/useRecord";
 
 const AddImage = ({
   type = "front",
@@ -17,7 +17,9 @@ const AddImage = ({
 }) => {
   const id = `file_input-${type}`;
 
-  const [triggerUploadImage, { isLoading }] = useUploadRecordImageMutation();
+  const { triggerUploadImage, uploadRecordImageLoading } = useRecord({
+    recordId,
+  });
 
   const [image, setImage] = useState(null);
   const [openFileCropper, setOpenFileCropper] = useState(false);
@@ -66,7 +68,7 @@ const AddImage = ({
       />
       <AddImageOuter onClick={openFileInput}>
         {imageURL ? (
-          <PreviewImageBox loading={isLoading}>
+          <PreviewImageBox loading={uploadRecordImageLoading}>
             <PreviewImage src={imageURL} alt={`preview of ${type}`} />
           </PreviewImageBox>
         ) : (

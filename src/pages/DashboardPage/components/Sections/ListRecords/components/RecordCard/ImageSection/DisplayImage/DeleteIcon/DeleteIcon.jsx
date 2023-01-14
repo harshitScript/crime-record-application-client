@@ -1,5 +1,5 @@
 import { toast } from "react-hot-toast";
-import { useDeleteRecordImageMutation } from "../../../../../../../../../../store/recordApi";
+import useRecord from "../../../../../../../../../../customHooks/useRecord";
 import { TrashIcon, TrashLoader } from "./DeleteIcon.style";
 
 const DeleteIcon = ({
@@ -7,7 +7,9 @@ const DeleteIcon = ({
   recordId = "",
   recordDataRefetch = () => {},
 }) => {
-  const [triggerDeleteImage, { isLoading }] = useDeleteRecordImageMutation();
+  const { triggerDeleteImage, deleteRecordImageLoading } = useRecord({
+    recordId,
+  });
   const deleteImageHandler = async () => {
     try {
       const response = await triggerDeleteImage({ type, recordId });
@@ -27,7 +29,11 @@ const DeleteIcon = ({
   };
   return (
     <>
-      {isLoading ? <TrashLoader /> : <TrashIcon onClick={deleteImageHandler} />}
+      {deleteRecordImageLoading ? (
+        <TrashLoader />
+      ) : (
+        <TrashIcon onClick={deleteImageHandler} />
+      )}
     </>
   );
 };

@@ -2,7 +2,9 @@ import { useEffect } from "react";
 import { toast } from "react-hot-toast";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { useCreateRecordMutation } from "../../../../../../../store/recordApi";
+import recordApi, {
+  useCreateRecordMutation,
+} from "../../../../../../../store/recordApi";
 import {
   setActiveSection,
   setCrimesFormData,
@@ -33,22 +35,24 @@ const useCreateRecordForm = () => {
     document.getElementById(activeSection).scrollIntoView();
   }, [activeSection]);
 
-  const submitCreateRecordForm = () => {
+  const submitCreateRecordForm = async () => {
     if (allFormDataReceived) {
-      triggerCreateRecord({
-        body: {
-          ...formData?.identity,
-          ...formData?.location,
-          ...formData?.crimes,
-        },
-      }).then((response) => {
-        if (response.error) {
-          toast.error("Failed to create record.");
-        } else {
-          toast.success("Record created successfully.");
-          navigate("/dashboard/list-records");
-        }
-      });
+      try {
+        const response = await triggerCreateRecord({
+          body: {
+            ...formData?.identity,
+            ...formData?.location,
+            ...formData?.crimes,
+          },
+        });
+        if (response?.error) throw new Error();
+
+        toast.success("Record created successfully.");
+        dispatch(recordApi.util.invalidateTags(["record-ids"]));
+        navigate("/dashboard/list-records");
+      } catch {
+        toast.error("Failed to create record.");
+      }
     }
   };
 

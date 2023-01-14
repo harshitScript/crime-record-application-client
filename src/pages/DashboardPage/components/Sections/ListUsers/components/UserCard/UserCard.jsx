@@ -14,6 +14,10 @@ import {
 import { HiChevronDoubleDown, HiChevronDoubleUp } from "react-icons/hi";
 import InvisibleBackdrop from "../../../../../../../components/InvisibleBackdrop";
 import DeleteIcon from "../DeleteIcon/DeleteIcon";
+import useRecord from "../../../../../../../customHooks/useRecord";
+import { MdWbTwighlight } from "react-icons/md";
+import { copyToClipBoard } from "../../../../../../../utils/helper";
+import { toast } from "react-hot-toast";
 
 const UserCard = ({ user }) => {
   return (
@@ -25,7 +29,6 @@ const UserCard = ({ user }) => {
 };
 
 const DetailsSection = ({ user }) => {
-  console.log("The user => ", user);
   return (
     <Main>
       <DeleteIcon user={user} />
@@ -55,16 +58,40 @@ const RecordsDropDown = ({ records }) => {
         <>
           <InvisibleBackdrop onClick={toggle} />
           <RecordDDBody>
-            <Option title={"Click to copy record's uid."}>
-              <span>Criminal Name</span>
-              <code>random-uid</code>
-            </Option>
+            {records.map((recordId) => (
+              <RecordOption recordId={recordId} key={recordId} />
+            ))}
           </RecordDDBody>
         </>
       ) : (
         <></>
       )}
     </RelativeOuter>
+  );
+};
+
+const RecordOption = ({ recordId }) => {
+  const { recordData, recordDataLoading } = useRecord({ recordId });
+  const copySuccess = () => toast.success("Record UID copied.");
+  const copyFailure = () => toast.error("Failed to copy Record UID. ");
+  return (
+    <Option
+      title={"Click to copy record's uid."}
+      onClick={copyToClipBoard.bind(null, {
+        text: recordId,
+        success: copySuccess,
+        failure: copyFailure,
+      })}
+    >
+      {recordDataLoading ? (
+        <MdWbTwighlight className="blink" />
+      ) : (
+        <>
+          <span>{recordData?.name}</span>
+          <code>{recordData?._id}</code>
+        </>
+      )}
+    </Option>
   );
 };
 

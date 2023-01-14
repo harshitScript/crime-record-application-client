@@ -42,7 +42,7 @@ const RecordCard = ({ recordId }) => {
           {recordData?.city}, {recordData?.state}
         </SubTitleMd>
         <hr />
-        <RecordActions copyText={recordId} />
+        <RecordActions copyText={recordId} recordId={recordId} />
         <hr />
         <ListCrimes crimesList={recordData?.crimes} />
       </section>

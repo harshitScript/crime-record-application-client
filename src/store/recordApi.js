@@ -8,6 +8,7 @@ const recordApi = createApi({
       Authorization: `Bearer ${localStorage.getItem("authToken")}`,
     },
   }),
+  tagTypes: ["record-ids"],
   endpoints: (builder) => ({
     createRecord: builder.mutation({
       query: ({ body }) => ({
@@ -18,6 +19,7 @@ const recordApi = createApi({
     }),
     getRecordsId: builder.query({
       query: ({ page }) => `/record/list-ids/${page}`,
+      providesTags: ["record-ids"],
     }),
     uploadRecordImage: builder.mutation({
       query: ({ body, recordId, type }) => ({
@@ -37,6 +39,12 @@ const recordApi = createApi({
         method: "DELETE",
       }),
     }),
+    deleteRecord: builder.mutation({
+      query: ({ recordId }) => ({
+        url: `record/delete/${recordId}`,
+        method: "DELETE",
+      }),
+    }),
   }),
 });
 
@@ -46,6 +54,7 @@ export const {
   useUploadRecordImageMutation,
   useGetRecordInfoQuery,
   useDeleteRecordImageMutation,
+  useDeleteRecordMutation,
 } = recordApi;
 
 export default recordApi;

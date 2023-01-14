@@ -56,13 +56,14 @@ export const RecordDDBody = styled.div`
   min-height: 40px;
   position: absolute;
   width: 100%;
-  background: grey;
+  background: #fff;
   z-index: 1;
   border-radius: 0.3rem;
   max-height: 100px;
   overflow: auto;
   box-shadow: 0 0 0.4rem grey;
   margin-top: 0.5rem;
+  padding: 0.5rem 0;
 `;
 
 export const Option = styled.div`
@@ -70,19 +71,22 @@ export const Option = styled.div`
   min-height: 40px;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   justify-content: center;
   padding: 0.5rem;
   box-sizing: border-box;
   font-size: 0.7rem;
-  background: ${({ active, primaryColor }) => (active ? primaryColor : "#fff")};
   color: ${({ secondaryColor }) => secondaryColor};
   &:hover {
     background: ${({ primaryColor }) => primaryColor};
   }
-  & > code {
-    font-size: 0.6rem;
+  & > span {
+    font-weight: bold;
   }
+  & > code {
+    font-size: 0.5rem;
+  }
+  border-bottom: 1px solid grey;
 `;
 
 export const TrashIcon = styled(BsFillTrashFill)`
