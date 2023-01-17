@@ -7,7 +7,7 @@ const ViewCard = ({ title, description, code, imageURL }) => {
   const { theme } = useTheme();
   return (
     <Outer
-      primaryColor={theme?.primaryColor}
+      secondaryColor={theme?.secondaryColor}
       className="flip"
       to={`/authentication/${code}`}
       image={imageURL}
@@ -29,7 +29,7 @@ const Outer = styled(Link)`
   display: flex;
   flex-direction: column;
   text-decoration: unset;
-  color: ${({ SecondaryColor }) => SecondaryColor} !important;
+  color: ${({ secondaryColor }) => secondaryColor} !important;
 
   .main {
     background-image: url(${({ image }) => image});

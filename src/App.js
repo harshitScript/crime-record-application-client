@@ -7,6 +7,7 @@ import AuthenticationPage from "./pages/AuthenticationPage/AuthenticationPage";
 import JourneyPage from "./pages/JourneyPage/JourneyPage";
 import { Toaster } from "react-hot-toast";
 import CheckUser from "./Checkers/CheckUser";
+import ViewPage from "./pages/ViewPage/ViewPage";
 
 function App() {
   const { isAuthenticated } = useAuth();
@@ -37,6 +38,7 @@ function App() {
             )
           }
         />
+        <Route path="/view/records" element={<ViewPage />} />
       </Routes>
       <Toaster />
     </Layout1>

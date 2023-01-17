@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { Box } from "../../../../components/Box/Box";
 import Button from "../../../../components/Buttons/Button";
 import { Card } from "../../../../components/Cards/Card";
@@ -9,10 +9,13 @@ import { useLoginUserMutation } from "../../../../store/userApi";
 import toast from "react-hot-toast";
 import useAuth from "../../../../customHooks/useAuth";
 import { TextField } from "../../../../components/FormFields/FormFields.style";
+import BorderedButton from "../../../../components/Buttons/BorderedButton";
+import { OrText } from "./LoginForm.style";
 
 const LoginForm = () => {
   const { theme } = useTheme();
   const { type } = useParams();
+  const navigate = useNavigate();
 
   const [triggerLogin, { isLoading }] = useLoginUserMutation();
   const { setAuthDataAndReload } = useAuth();
@@ -46,6 +49,10 @@ const LoginForm = () => {
         position: "top-center",
       });
     }
+  };
+
+  const backHandler = () => {
+    navigate("/journey");
   };
 
   return (
@@ -106,6 +113,16 @@ const LoginForm = () => {
             <Button wd="100%" type="submit" loader={isLoading}>
               Login
             </Button>
+
+            <OrText>OR</OrText>
+
+            <BorderedButton
+              wd="100%"
+              onClick={backHandler}
+              disabled={isLoading}
+            >
+              Back
+            </BorderedButton>
           </Box>
         </form>
       </Card.Body>
