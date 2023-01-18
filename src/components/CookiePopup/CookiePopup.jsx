@@ -4,27 +4,19 @@ import { useNavigate } from "react-router-dom";
 import useVisitor from "../../customHooks/useVisitor";
 import BorderedButton from "../Buttons/BorderedButton";
 import Button from "../Buttons/Button";
-import axios from "axios";
+
 const CookiePopup = () => {
   const navigate = useNavigate();
   const { triggerTrackVisitorQuery, trackVisitorQuery } = useVisitor();
   const acceptClickHandler = async () => {
-    /*  try {
+    try {
       await triggerTrackVisitorQuery();
       toast.success("Cookie set Successfully", { position: "top-center" });
     } catch {
       toast.error("Failed to set Cookies.", {
         position: "top-center",
       });
-    } */
-    const transport = axios.create({
-      baseURL: process.env.REACT_APP_BASE_URI,
-      withCredentials: true,
-    });
-
-    await transport.get("visitor/track");
-
-    toast.success("Cookie set Successfully", { position: "top-center" });
+    }
   };
   const denyClickHandler = () => {
     navigate("/view/records", { replace: true });

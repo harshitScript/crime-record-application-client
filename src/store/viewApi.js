@@ -4,13 +4,11 @@ const viewApi = createApi({
   reducerPath: "view",
   baseQuery: fetchBaseQuery({
     baseUrl: process.env.REACT_APP_BASE_URI,
+    credentials: "include",
   }),
   endpoints: (builder) => ({
     trackVisitor: builder.query({
       query: () => `visitor/track`,
-      extraOptions: {
-        withCredentials: true,
-      },
     }),
   }),
 });
