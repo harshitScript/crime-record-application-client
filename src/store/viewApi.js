@@ -4,6 +4,7 @@ const viewApi = createApi({
   reducerPath: "view",
   baseQuery: fetchBaseQuery({
     baseUrl: process.env.REACT_APP_BASE_URI,
+    //? Required to set cookie in CORS.
     credentials: "include",
   }),
   endpoints: (builder) => ({

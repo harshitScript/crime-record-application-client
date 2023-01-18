@@ -12,6 +12,7 @@ const CookiePopup = () => {
     try {
       await triggerTrackVisitorQuery();
       toast.success("Cookie set Successfully", { position: "top-center" });
+      navigate("/view/records", { replace: true });
     } catch {
       toast.error("Failed to set Cookies.", {
         position: "top-center",
