@@ -8,6 +8,10 @@ const viewApi = createApi({
   endpoints: (builder) => ({
     trackVisitor: builder.query({
       query: () => `visitor/track`,
+      headers: {
+        //? Tells the browser that the upcoming response has cookies.
+        withCredentials: true,
+      },
     }),
   }),
 });
