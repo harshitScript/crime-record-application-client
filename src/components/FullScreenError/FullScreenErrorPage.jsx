@@ -21,7 +21,7 @@ const FullScreenError = ({
           ) : (
             <></>
           )}
-          {back ? <LinkButton onClick={back}>{`< Go Back`}</LinkButton> : <></>}
+          {back ? <LinkButton onClick={back}>{"< Go Back"}</LinkButton> : <></>}
         </div>
       </main>
     </FullScreenErrorOuter>

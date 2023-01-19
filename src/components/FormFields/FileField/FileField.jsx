@@ -69,7 +69,7 @@ const MockFileField = ({ selectedFile, readOnly, toggleCropEditor }) => {
         ) : (
           <>
             <ImageUploadIcon />
-            <p className="title">{`Upload a User image`}</p>
+            <p className="title">{"Upload a User image"}</p>
           </>
         )}
       </MockFileOuter>

@@ -12,7 +12,7 @@ const recordApi = createApi({
   endpoints: (builder) => ({
     createRecord: builder.mutation({
       query: ({ body }) => ({
-        url: `record/create`,
+        url: "record/create",
         body,
         method: "POST",
       }),

@@ -2,6 +2,7 @@ import styled from "styled-components/macro";
 import { Card } from "../../../../../components/Cards/Card";
 import { SubTitleMd } from "../../../../../components/Typography/SubTitle";
 import { TitleMd } from "../../../../../components/Typography/Title";
+import RenderRecordsContext from "../../../../../context/renderRecordsContext";
 import RenderRecords from "./components/RenderRecords";
 const ListRecords = () => {
   return (
@@ -10,7 +11,9 @@ const ListRecords = () => {
         <TitleMd>List Records Section</TitleMd>
         <SubTitleMd>List all the records in the database.</SubTitleMd>
       </StickyCard>
-      <RenderRecords />
+      <RenderRecordsContext.Provider value={{ user: true }}>
+        <RenderRecords />
+      </RenderRecordsContext.Provider>
     </>
   );
 };

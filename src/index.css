@@ -23,6 +23,10 @@ body {
   -webkit-animation: rotate360 200ms linear;
 }
 
+hr {
+  margin: 0.5rem 0 !important;
+}
+
 @keyframes rotate360 {
   from {
     transform: rotate(0deg);

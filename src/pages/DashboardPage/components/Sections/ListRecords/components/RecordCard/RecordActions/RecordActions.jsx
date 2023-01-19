@@ -1,7 +1,9 @@
+import { useContext } from "react";
 import { toast } from "react-hot-toast";
 import { useDispatch } from "react-redux";
 import BorderedButton from "../../../../../../../../components/Buttons/BorderedButton";
 import Button from "../../../../../../../../components/Buttons/Button";
+import RenderRecordsContext from "../../../../../../../../context/renderRecordsContext";
 import useRecord from "../../../../../../../../customHooks/useRecord";
 import recordApi from "../../../../../../../../store/recordApi";
 import { copyToClipBoard } from "../../../../../../../../utils/helper";
@@ -10,6 +12,7 @@ import { ActionsContainer } from "./RecordActions.style";
 const RecordActions = ({ copyText = "", recordId = "" }) => {
   const dispatch = useDispatch();
   const { triggerDeleteRecord, deleteRecordQuery } = useRecord({ recordId });
+  const { user } = useContext(RenderRecordsContext);
   const copySuccess = () => toast.success("Record UID copied");
   const copyFailure = () => toast.success("Failed to copy Record UID");
   const deleteRecord = async () => {
@@ -30,15 +33,20 @@ const RecordActions = ({ copyText = "", recordId = "" }) => {
           success: copySuccess,
           failure: copyFailure,
         })}
+        fullWidth={!user}
       >
         Copy UID
       </Button>
-      <BorderedButton
-        onClick={deleteRecord}
-        loader={deleteRecordQuery?.isLoading}
-      >
-        Delete
-      </BorderedButton>
+      {user ? (
+        <BorderedButton
+          onClick={deleteRecord}
+          loader={deleteRecordQuery?.isLoading}
+        >
+          Delete
+        </BorderedButton>
+      ) : (
+        <></>
+      )}
     </ActionsContainer>
   );
 };

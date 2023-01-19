@@ -5,10 +5,11 @@ import {
   PreviewImageBox,
 } from "./AddImage.style";
 import { BiImageAdd } from "react-icons/bi";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import FileCrop from "../../../../../../../../../components/FormFields/FileField/FileCrop";
 import { toast } from "react-hot-toast";
 import useRecord from "../../../../../../../../../customHooks/useRecord";
+import RenderRecordsContext from "../../../../../../../../../context/renderRecordsContext";
 
 const AddImage = ({
   type = "front",
@@ -21,6 +22,8 @@ const AddImage = ({
     recordId,
   });
 
+  const { user } = useContext(RenderRecordsContext);
+
   const [image, setImage] = useState(null);
   const [openFileCropper, setOpenFileCropper] = useState(false);
   const toggleFileCropper = () => setOpenFileCropper((current) => !current);
@@ -29,7 +32,10 @@ const AddImage = ({
     toggleFileCropper();
   };
   const openFileInput = () => {
-    document.getElementById(id).click();
+    if (user) {
+      document.getElementById(id).click();
+    }
+    return;
   };
   const uploadFile = async (image) => {
     setImage(image);

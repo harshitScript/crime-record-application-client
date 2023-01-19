@@ -14,7 +14,7 @@ const CheckUser = ({ children }) => {
 
   const goBackHandler = () => {
     removeAuthDataAndReload();
-    navigate(`/authentication/user`, { replace: true });
+    navigate("/authentication/user", { replace: true });
   };
 
   if (userDataLoading) return <FullScreenLoader />;

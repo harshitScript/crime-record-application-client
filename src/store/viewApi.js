@@ -9,7 +9,7 @@ const viewApi = createApi({
   }),
   endpoints: (builder) => ({
     trackVisitor: builder.query({
-      query: () => `visitor/track`,
+      query: () => "visitor/track",
     }),
   }),
 });

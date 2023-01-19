@@ -9,7 +9,7 @@ export const OuterCard = styled(Card)`
 
   .first-section {
     width: 100%;
-    padding: 0.5rem;
+    padding: 0 0.5rem;
     box-sizing: border-box;
     min-height: 150px;
     display: flex;
