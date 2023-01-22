@@ -1,3 +1,5 @@
+import { useContext } from "react";
+import RenderRecordsContext from "../../../../../../../../../context/renderRecordsContext";
 import DeleteIcon from "./DeleteIcon/DeleteIcon";
 import { RelativeOuter } from "./DeleteIcon/DeleteIcon.style";
 import { RecordImage } from "./DisplayImage.style";
@@ -8,13 +10,18 @@ const DisplayImage = ({
   url = "",
   recordDataRefetch = () => {},
 }) => {
+  const { user } = useContext(RenderRecordsContext);
   return (
     <RelativeOuter>
-      <DeleteIcon
-        type={type}
-        recordId={recordId}
-        recordDataRefetch={recordDataRefetch}
-      />
+      {user ? (
+        <DeleteIcon
+          type={type}
+          recordId={recordId}
+          recordDataRefetch={recordDataRefetch}
+        />
+      ) : (
+        <></>
+      )}
       <RecordImage src={url} id={type} alt={type} loading="lazy" />
     </RelativeOuter>
   );

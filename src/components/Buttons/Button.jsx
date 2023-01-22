@@ -6,12 +6,19 @@ const Button = ({
   loader = false,
   fullWidth = false,
   disabled = false,
+  onClick = () => {},
   ...props
 }) => {
   const { theme } = useTheme();
 
   return (
-    <StyledButton {...theme} fullWidth={fullWidth} {...props}>
+    <StyledButton
+      {...theme}
+      fullWidth={fullWidth}
+      onClick={disabled ? () => {} : onClick}
+      disabled={disabled}
+      {...props}
+    >
       {children} {loader ? <MdWbTwighlight className="blink" /> : <></>}
     </StyledButton>
   );

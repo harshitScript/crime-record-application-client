@@ -45,11 +45,6 @@ const recordApi = createApi({
         method: "DELETE",
       }),
     }),
-    generateRecordPDF: builder.query({
-      query: ({ recordId }) => ({
-        url: `/record/${recordId}/pdf`,
-      }),
-    }),
   }),
 });
 
@@ -60,7 +55,6 @@ export const {
   useGetRecordInfoQuery,
   useDeleteRecordImageMutation,
   useDeleteRecordMutation,
-  useLazyGenerateRecordPDFQuery,
 } = recordApi;
 
 export default recordApi;
