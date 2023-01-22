@@ -12,7 +12,7 @@ import FileCrop from "./FileCrop";
 import { EditIcon } from "./FileCrop.style";
 
 const FileField = forwardRef(
-  ({ accepts = "", file, readOnly, label = "", ...props }, ref) => {
+  ({ accepts = "", file, readOnly, ...props }, ref) => {
     const [openCropEditor, setOpenCropEditor] = useState(false);
     const [selectedFile, setSelectedFile] = useState(file?.[0] || null);
     const toggleCropEditor = () => setOpenCropEditor((current) => !current);

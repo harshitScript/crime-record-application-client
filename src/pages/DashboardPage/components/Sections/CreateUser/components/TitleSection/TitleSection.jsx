@@ -2,11 +2,11 @@ import styled from "styled-components/macro";
 //import LampsGroup from "../../../../../../../components/Lamps/LampsGroup";
 import { TitleSm } from "../../../../../../../components/Typography/Title";
 import useTheme from "../../../../../../../customHooks/useTheme";
-const TitleSection = ({ title = "", status = "pending" }) => {
+const TitleSection = ({ title = "" /* status = "pending" */ }) => {
   const { theme } = useTheme();
   return (
     <Outer>
-      <SectionTitle {...theme}>{title}</SectionTitle>
+      <SectionTitle {...theme}>{title}</SectionTitle>{/*  */}
       {/* <LampsGroup status={status} /> */}
     </Outer>
   );

@@ -21,7 +21,6 @@ const DropDown = forwardRef(
       if (value) {
         onChange(value);
       }
-      // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [value]);
 
     return (

@@ -33,7 +33,7 @@ const CreateUserForm = () => {
 
   const [viewOnly, setViewOnly] = useState(false);
 
-  const saveClickHandler = (e) => {
+  const saveClickHandler = () => {
     setViewOnly(true);
   };
 

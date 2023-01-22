@@ -34,7 +34,7 @@ const FileCrop = ({
 
   const imageURL = useMemo(
     () => URL.createObjectURL(selectedFile),
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+
     [selectedFile?.name]
   );
 
