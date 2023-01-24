@@ -1,6 +1,6 @@
-import useUser from "../../../../../../customHooks/useUser";
+import useUser from "../../../../../../../../customHooks/useUser";
+import { Outer } from "../ProfileSection/ProfileSection.style";
 import Action from "./components/Action";
-import { Outer } from "./QuickMenu.style";
 
 const QuickMenu = () => {
   const { actions } = useUser();

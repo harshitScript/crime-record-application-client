@@ -1,5 +1,5 @@
-import useTheme from "../../../../../../../customHooks/useTheme";
 import { Outer } from "./Action.style";
+import useTheme from "../../../../../../../../../customHooks/useTheme";
 
 const Action = ({
   config = { title: "", description: "", onClick: () => {} },

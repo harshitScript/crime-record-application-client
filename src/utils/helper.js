@@ -51,3 +51,10 @@ export const urlToObject = async ({ imageURL, fileName }) => {
   const file = new File([blob], fileName, { type: blob.type });
   return file;
 };
+
+export const stringLengthCutter = (str, allowedLength) => {
+  if (str?.length > allowedLength) {
+    return `${str.substring(0, allowedLength + 1)}...`;
+  }
+  return str;
+};

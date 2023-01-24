@@ -6,15 +6,17 @@ export const Outer = styled.section`
   top: 0;
   left: 0;
   overflow-y: auto;
-  width: 50%;
+  width: 60%;
   background: ${({ primaryColor }) => primaryColor};
   z-index: 4;
-  padding: 1rem;
   box-sizing: border-box;
   box-shadow: 0 0 4px grey;
-  border-top: 1rem solid ${({ ternaryColor }) => ternaryColor};
   transition: all 300ms;
   ${({ open }) => (open ? "" : "transform: translateX(-100%)")};
+`;
+
+export const PaddingBox = styled.div`
+  padding: 1rem;
 `;
 
 export const Backdrop = styled.div`

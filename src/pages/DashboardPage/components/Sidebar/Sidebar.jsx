@@ -1,10 +1,8 @@
 import { useState } from "react";
 import useTheme from "../../../../customHooks/useTheme";
-import ProfileSection from "./components/ProfileSection/ProfileSection";
-import QuickMenu from "./components/QuickMenu/QuickMenu";
-import { Backdrop, Outer, Toggle } from "./Sidebar.style";
+import { Backdrop, Toggle } from "./Sidebar.style";
 import { FaArrowRight } from "react-icons/fa";
-import LogoutButton from "../../../../components/LogoutButton/LogoutButton";
+import MainSection from "./components/MainSection/MainSection";
 
 const Sidebar = () => {
   const { theme } = useTheme();
@@ -19,11 +17,7 @@ const Sidebar = () => {
         </Toggle>
       )}
       {sideBar ? <Backdrop onClick={setSideBar.bind(null, false)} /> : <></>}
-      <Outer {...theme} open={sideBar}>
-        <ProfileSection />
-        <QuickMenu />
-        <LogoutButton hard={true} fullWidth={true} />
-      </Outer>
+      <MainSection sideBar={sideBar} />
     </>
   );
 };

@@ -16,7 +16,10 @@ import InvisibleBackdrop from "../../../../../../../components/InvisibleBackdrop
 import DeleteIcon from "../DeleteIcon/DeleteIcon";
 import useRecord from "../../../../../../../customHooks/useRecord";
 import { MdWbTwighlight } from "react-icons/md";
-import { copyToClipBoard } from "../../../../../../../utils/helper";
+import {
+  copyToClipBoard,
+  stringLengthCutter,
+} from "../../../../../../../utils/helper";
 import { toast } from "react-hot-toast";
 
 const UserCard = ({ user }) => {
@@ -32,8 +35,10 @@ const DetailsSection = ({ user }) => {
   return (
     <Main>
       <DeleteIcon user={user} />
-      <TitleSm>{user?.name}</TitleSm>
-      <SubTitleSm>{user?.email}</SubTitleSm>
+      <TitleSm title={user?.name}>{stringLengthCutter(user?.name, 15)}</TitleSm>
+      <SubTitleSm title={user?.email}>
+        {stringLengthCutter(user?.email, 20)}
+      </SubTitleSm>
       <SubTitleSm>{user?.mobile}</SubTitleSm>
       <Permissions>{user?.permissions?.join(", ")}</Permissions>
       <RecordsDropDown records={user?.records} />

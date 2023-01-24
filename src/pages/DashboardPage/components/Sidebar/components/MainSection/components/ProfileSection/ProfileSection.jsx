@@ -1,12 +1,15 @@
-import { ImageOuter, Outer, SubTitle, Title } from "./ProfileSection.style";
-import useTheme from "../../../../../../customHooks/useTheme";
-import { GrCopy } from "react-icons/gr";
-import { BsClipboardCheck } from "react-icons/bs";
 import { useState } from "react";
-import { copyToClipBoard } from "../../../../../../utils/helper";
 import { toast } from "react-hot-toast";
-import useUser from "../../../../../../customHooks/useUser";
-import useAuth from "../../../../../../customHooks/useAuth";
+import { BsClipboardCheck } from "react-icons/bs";
+import { GrCopy } from "react-icons/gr";
+import useAuth from "../../../../../../../../customHooks/useAuth";
+import useTheme from "../../../../../../../../customHooks/useTheme";
+import useUser from "../../../../../../../../customHooks/useUser";
+import {
+  copyToClipBoard,
+  stringLengthCutter,
+} from "../../../../../../../../utils/helper";
+import { ImageOuter, Outer, SubTitle, Title } from "./ProfileSection.style";
 
 const ProfileSection = () => {
   const { theme } = useTheme();
@@ -25,7 +28,9 @@ const ProfileSection = () => {
           loading="lazy"
         />
       </ImageOuter>
-      <Title>{userData?.name}</Title>
+      <Title title={userData?.name}>
+        {stringLengthCutter(userData?.name, 15)}
+      </Title>
       <SubTitle>
         {getAuthData()?.userId}
         {copy ? (

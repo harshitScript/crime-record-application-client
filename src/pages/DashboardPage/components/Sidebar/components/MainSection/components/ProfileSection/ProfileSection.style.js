@@ -17,6 +17,7 @@ export const ImageOuter = styled.div`
     width: 100%;
     height: 100%;
     border-radius: 50%;
+    object-fit: cover;
   }
 `;
 
@@ -38,6 +39,7 @@ export const SubTitle = styled.p`
   justify-content: center;
   padding: 0.3px;
   border: 1px solid #000;
+  align-items: center;
 
   & > svg {
     cursor: pointer;
