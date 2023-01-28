@@ -6,6 +6,7 @@ const SideBarNavigation = ({
   setActiveSection = () => {},
   activeSection = "profile",
 }) => {
+  console.log("The active section => ", activeSection);
   const { theme } = useTheme();
   return (
     <NavOuter {...theme}>

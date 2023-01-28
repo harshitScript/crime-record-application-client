@@ -15,6 +15,7 @@ const Navbar = ({ ...props }) => {
           src={tenantLogo}
           title={"Harshit's Organization"}
           alt="harshit's org"
+          decoding="async"
         />
       </Link>
     </NavBarBlock>

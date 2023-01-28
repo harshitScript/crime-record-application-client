@@ -5,22 +5,6 @@ export const Outer = styled.section`
   min-height: 150px;
 `;
 
-export const ImageOuter = styled.div`
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  padding: 0.5rem;
-  outline: 1px solid ${({ secondaryColor }) => secondaryColor};
-  margin: 0.5rem auto;
-
-  & > img {
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    object-fit: cover;
-  }
-`;
-
 export const Title = styled.h1`
   font-size: 1.5rem;
   font-weight: bold;

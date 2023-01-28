@@ -6,7 +6,7 @@ export const Outer = styled.section`
   top: 0;
   left: 0;
   overflow-y: auto;
-  width: 60%;
+  width: 55%;
   background: ${({ primaryColor }) => primaryColor};
   z-index: 4;
   box-sizing: border-box;
