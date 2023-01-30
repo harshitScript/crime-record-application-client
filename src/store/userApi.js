@@ -42,6 +42,13 @@ const userApi = createApi({
         method: "DELETE",
       }),
     }),
+    replaceUserImage: builder.mutation({
+      query: ({ userId, body }) => ({
+        url: `user/${userId}/replace-image`,
+        method: "POST",
+        body,
+      }),
+    }),
   }),
 });
 
@@ -51,6 +58,7 @@ export const {
   useLoginUserMutation,
   useListUserQuery,
   useDeleteUserMutation,
+  useReplaceUserImageMutation,
 } = userApi;
 
 export default userApi;

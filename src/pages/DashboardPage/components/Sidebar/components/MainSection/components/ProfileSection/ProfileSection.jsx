@@ -18,7 +18,10 @@ const ProfileSection = () => {
 
   return (
     <Outer>
-      <ImageSection imageURL={userData?.imageData?.url} />
+      <ImageSection
+        imageURL={userData?.imageData?.url}
+        userId={getAuthData()?.userId}
+      />
       <Title title={userData?.name}>
         {stringLengthCutter(userData?.name, 15)}
       </Title>
