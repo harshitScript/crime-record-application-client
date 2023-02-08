@@ -85,6 +85,7 @@ const InputOuter = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  background: #fff;
   opacity: ${({ readOnly }) => (readOnly ? 0.8 : 1)};
   cursor: ${({ readOnly }) => (readOnly ? "not-allowed" : "pointer")};
 `;

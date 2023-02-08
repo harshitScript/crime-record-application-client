@@ -23,3 +23,11 @@ export const TitleSm = styled.h1`
   margin: unset;
   word-break: break-word;
 `;
+
+export const LinkText = styled.p`
+  color: #1e90ff;
+  font-size: 0.8rem;
+  font-weight: bold;
+  margin: unset;
+  cursor: pointer;
+`;

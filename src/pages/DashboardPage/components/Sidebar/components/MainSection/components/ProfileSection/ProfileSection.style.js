@@ -1,4 +1,5 @@
 import styled from "styled-components/macro";
+import { LinkText } from "../../../../../../../AuthenticationPage/Components/LoginForm/LoginForm.style";
 
 export const Outer = styled.section`
   width: 100%;
@@ -28,4 +29,7 @@ export const SubTitle = styled.p`
   & > svg {
     cursor: pointer;
   }
+`;
+export const PlaceMiddleLink = styled(LinkText)`
+  text-align: center;
 `;
