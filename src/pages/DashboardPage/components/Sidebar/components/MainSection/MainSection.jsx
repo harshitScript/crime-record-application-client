@@ -1,5 +1,4 @@
 import { useState } from "react";
-import LogoutButton from "../../../../../../components/LogoutButton/LogoutButton";
 import useTheme from "../../../../../../customHooks/useTheme";
 import { Outer, PaddingBox } from "../../Sidebar.style";
 import ProfileSection from "./components/ProfileSection/ProfileSection";
@@ -20,7 +19,6 @@ const MainSection = ({ sideBar = false }) => {
         {activeSection === "actions" ? (
           <>
             <QuickMenu />
-            <LogoutButton hard={true} fullWidth={true} />
           </>
         ) : (
           <></>

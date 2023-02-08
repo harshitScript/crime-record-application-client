@@ -5,3 +5,11 @@ export const OrText = styled.p`
   text-align: center;
   font-weight: bold;
 `;
+
+export const LinkText = styled.p`
+  color: #1e90ff;
+  font-size: 0.8rem;
+  font-weight: bold;
+  margin: unset;
+  cursor: pointer;
+`;
