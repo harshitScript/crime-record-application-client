@@ -19,7 +19,11 @@ const LoginForm = () => {
   const { type } = useParams();
   const navigate = useNavigate();
 
+<<<<<<< HEAD
   const [showPasswordResetPopup, setShowPasswordResetPopup] = useState(false);
+=======
+  const [showPasswordResetPopup, setShowPasswordResetPopup] = useState(true);
+>>>>>>> 362174bd1e57c5ac8dd8483fe6fa34d496bc5966
   const toggleShowPasswordResetPopup = () =>
     setShowPasswordResetPopup((current) => !current);
 
