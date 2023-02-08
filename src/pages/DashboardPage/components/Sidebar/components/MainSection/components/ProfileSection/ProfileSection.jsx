@@ -2,6 +2,7 @@ import { useState } from "react";
 import { toast } from "react-hot-toast";
 import { BsClipboardCheck } from "react-icons/bs";
 import { GrCopy } from "react-icons/gr";
+import LogoutButton from "../../../../../../../../components/LogoutButton/LogoutButton";
 import useAuth from "../../../../../../../../customHooks/useAuth";
 import useUser from "../../../../../../../../customHooks/useUser";
 import {
@@ -43,6 +44,8 @@ const ProfileSection = () => {
           />
         )}
       </SubTitle>
+      <br />
+      <LogoutButton hard={true} fullWidth={true} />
     </Outer>
   );
 };
