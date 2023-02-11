@@ -18,7 +18,9 @@ const recordApi = createApi({
       }),
     }),
     getRecordsId: builder.query({
-      query: ({ page }) => `/record/list-ids/${page}`,
+      query: ({ page, creator }) => {
+        return `/record/list-ids/${page}?creator=${creator}`;
+      },
       providesTags: ["record-ids"],
     }),
     uploadRecordImage: builder.mutation({

@@ -1,6 +1,6 @@
 import { useGetRecordsIdQuery } from "../store/recordApi";
 
-const useRecords = () => {
+const useRecords = ({ creator = "all" }) => {
   const {
     data,
     isLoading,
@@ -8,7 +8,7 @@ const useRecords = () => {
     isUninitialized,
     isError: recordsIdError,
     refetch: recordsIdRefetch,
-  } = useGetRecordsIdQuery({ page: 1 });
+  } = useGetRecordsIdQuery({ page: 1, creator });
 
   const recordsIdData = data?.recordsId;
   const recordsIdExits = !recordsIdData;
