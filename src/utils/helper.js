@@ -58,3 +58,13 @@ export const stringLengthCutter = (str, allowedLength) => {
   }
   return str;
 };
+
+export const getName = ({ type = "full", data = {} }) => {
+  if (type === "full") {
+    return data?.name;
+  } else if (type === "first") {
+    return data?.name?.split(" ")?.[0];
+  } else {
+    return data?.name?.split(" ")?.[1];
+  }
+};

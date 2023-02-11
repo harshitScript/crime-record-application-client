@@ -49,6 +49,13 @@ const userApi = createApi({
         body,
       }),
     }),
+    updateUser: builder.mutation({
+      query: ({ body }) => ({
+        url: "user/edit",
+        method: "PUT",
+        body,
+      }),
+    }),
   }),
 });
 
@@ -59,6 +66,7 @@ export const {
   useListUserQuery,
   useDeleteUserMutation,
   useReplaceUserImageMutation,
+  useUpdateUserMutation,
 } = userApi;
 
 export default userApi;

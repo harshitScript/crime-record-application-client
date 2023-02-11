@@ -1,5 +1,5 @@
 import { useEffect, useMemo } from "react";
-import { useGetUserInfoQuery } from "../store/userApi";
+import { useGetUserInfoQuery, useUpdateUserMutation } from "../store/userApi";
 import useAuth from "./useAuth";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
@@ -10,6 +10,8 @@ const useUser = () => {
 
   const { data, isError, isFetching, isUninitialized, isLoading, refetch } =
     useGetUserInfoQuery({ userId: getAuthData()?.userId });
+
+  const [triggerUpdateUser, updateUserQuery] = useUpdateUserMutation();
 
   const userData = data?.user;
   const userDataExist = !!userData;
@@ -96,6 +98,8 @@ const useUser = () => {
     userDataLoading,
     userDataRefetch,
     actions,
+    triggerUpdateUser,
+    updateUserQuery,
   };
 };
 export default useUser;
