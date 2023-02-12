@@ -10,7 +10,6 @@ const useRecord = ({ recordId }) => {
     data,
     isLoading,
     isFetching,
-    isUninitialized,
     isError: recordDataError,
     refetch: recordDataRefetch,
   } = useGetRecordInfoQuery({ recordId }, { skip: !recordId });
@@ -25,7 +24,7 @@ const useRecord = ({ recordId }) => {
 
   const recordData = data?.record;
   const recordDataExist = !!recordData;
-  const recordDataLoading = isLoading || isFetching || isUninitialized;
+  const recordDataLoading = isLoading || isFetching;
 
   return {
     recordData,

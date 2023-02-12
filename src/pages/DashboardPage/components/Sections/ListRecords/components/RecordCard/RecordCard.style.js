@@ -1,5 +1,6 @@
 import styled from "styled-components/macro";
 import { Card } from "../../../../../../../components/Cards/Card";
+import { LinkText } from "../../../../../../../components/Typography/Title";
 
 export const OuterCard = styled(Card)`
   width: 100%;
@@ -22,4 +23,8 @@ export const OuterCard = styled(Card)`
     padding: 0.5rem;
     box-sizing: border-box;
   }
+`;
+
+export const CenterLink = styled(LinkText)`
+  text-align: center;
 `;

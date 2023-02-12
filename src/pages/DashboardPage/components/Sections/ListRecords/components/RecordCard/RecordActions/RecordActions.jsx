@@ -9,10 +9,12 @@ import recordApi from "../../../../../../../../store/recordApi";
 import { copyToClipBoard } from "../../../../../../../../utils/helper";
 import { ActionsContainer } from "./RecordActions.style";
 import { FaFileDownload } from "react-icons/fa";
+import useUser from "../../../../../../../../customHooks/useUser";
 
-const RecordActions = ({ copyText = "", recordId = "" }) => {
+const RecordActions = ({ copyText = "", recordId = "", creatorId = "" }) => {
   const dispatch = useDispatch();
   const { triggerDeleteRecord, deleteRecordQuery } = useRecord({ recordId });
+  const { userData } = useUser();
   const { user } = useContext(RenderRecordsContext);
   const copySuccess = () => toast.success("Record UID copied");
   const copyFailure = () => toast.success("Failed to copy Record UID");
@@ -29,6 +31,7 @@ const RecordActions = ({ copyText = "", recordId = "" }) => {
   const generateRecord = async () => {
     window.open(`${process.env.REACT_APP_BASE_URI}record/${recordId}/pdf`);
   };
+  const showDeleteAndEdit = user && userData?._id === creatorId;
   return (
     <ActionsContainer>
       <Button
@@ -43,7 +46,8 @@ const RecordActions = ({ copyText = "", recordId = "" }) => {
       <Button onClick={generateRecord}>
         <FaFileDownload />
       </Button>
-      {user ? (
+
+      {showDeleteAndEdit ? (
         <BorderedButton
           onClick={deleteRecord}
           loader={deleteRecordQuery?.isLoading}

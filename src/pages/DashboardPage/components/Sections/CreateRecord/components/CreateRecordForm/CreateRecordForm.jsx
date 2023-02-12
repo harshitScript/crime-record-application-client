@@ -4,7 +4,8 @@ import LocationForm from "../FormSections/LocationForm/LocationForm";
 import { HorizontalScroll } from "./CreateRecordForm.style";
 import SubmitForm from "./SubmitForm/SubmitForm";
 
-const CreateRecordForm = () => {
+const CreateRecordForm = ({ initialRecordData = {} }) => {
+  console.log("The initialRecordData => ", initialRecordData);
   return (
     <>
       <HorizontalScroll>
