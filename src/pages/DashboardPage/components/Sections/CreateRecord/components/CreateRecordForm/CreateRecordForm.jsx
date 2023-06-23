@@ -4,17 +4,17 @@ import LocationForm from "../FormSections/LocationForm/LocationForm";
 import { HorizontalScroll } from "./CreateRecordForm.style";
 import SubmitForm from "./SubmitForm/SubmitForm";
 
-const CreateRecordForm = ({ initialRecordData = {} }) => {
-  console.log("The initialRecordData => ", initialRecordData);
+const CreateRecordForm = ({ initialRecordData }) => {
   return (
     <>
       <HorizontalScroll>
-        <IdentityForm />
-        <LocationForm />
-        <CrimesForm />
+        <IdentityForm initialRecordData={initialRecordData} />
+        <LocationForm initialRecordData={initialRecordData} />
+        <CrimesForm initialRecordData={initialRecordData} />
       </HorizontalScroll>
       <SubmitForm />
     </>
   );
 };
 export default CreateRecordForm;
+
