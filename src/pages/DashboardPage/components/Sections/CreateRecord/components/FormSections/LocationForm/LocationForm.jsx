@@ -10,7 +10,7 @@ import {
 } from "../../CreateRecordForm/CreateRecordForm.style";
 import useCreateRecordForm from "../../hooks/useCreateRecordForm";
 
-const LocationForm = () => {
+const LocationForm = ({ initialRecordData = {} }) => {
   const { saveLocationForm, isLoading } = useCreateRecordForm();
   const {
     register,
@@ -18,39 +18,16 @@ const LocationForm = () => {
     formState: { errors },
   } = useForm({
     mode: "all",
+    defaultValues: {
+      city: initialRecordData?.city,
+      state: initialRecordData?.state,
+      address: initialRecordData?.address,
+    },
   });
 
   return (
     <form id="location" onSubmit={handleSubmit(saveLocationForm)}>
       <FormSectionCard>
-        <Box>
-          <TextField
-            placeholder="Enter Pin-Code"
-            {...register("pinCode", {
-              required: {
-                value: true,
-                message: "PinCode is required.",
-              },
-              minLength: {
-                value: 6,
-                message: "PinCode must be 6 characters long.",
-              },
-              maxLength: {
-                value: 6,
-                message: "PinCode must be 6 characters long.",
-              },
-              pattern: {
-                value: /^[1-9][0-9]{5}$/,
-                message: "Not a valid pinCode",
-              },
-            })}
-          />
-          {errors?.pinCode?.message ? (
-            <Error>{errors?.pinCode?.message}</Error>
-          ) : (
-            <></>
-          )}
-        </Box>
         <Box>
           <TextField
             placeholder="Enter City"
