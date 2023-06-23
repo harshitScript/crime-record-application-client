@@ -2,8 +2,10 @@ import { useEffect } from "react";
 import { toast } from "react-hot-toast";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { useUrlQueries } from "../../../../../../../customHooks/useUrlQuery";
 import recordApi, {
   useCreateRecordMutation,
+  useEditRecordMutation,
 } from "../../../../../../../store/recordApi";
 import {
   setActiveSection,
@@ -15,8 +17,12 @@ const formSequence = ["identity", "location", "crimes"];
 const useCreateRecordForm = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const { edit } = useUrlQueries();
 
-  const [triggerCreateRecord, { isLoading }] = useCreateRecordMutation();
+  const [triggerCreateRecord, { isLoading: createLoading }] =
+    useCreateRecordMutation();
+  const [triggerEditRecord, { isLoading: editLoading }] =
+    useEditRecordMutation();
 
   const {
     createRecordForm: { activeSection, formData },
@@ -56,6 +62,27 @@ const useCreateRecordForm = () => {
     }
   };
 
+  const submitEditRecordForm = async () => {
+    if (allFormDataReceived) {
+      try {
+        const response = await triggerEditRecord({
+          body: {
+            ...formData?.identity,
+            ...formData?.location,
+            ...formData?.crimes,
+          },
+        });
+        if (response?.error) throw new Error();
+
+        toast.success("Record updated successfully.");
+        dispatch(recordApi.util.invalidateTags(["record-ids"]));
+        navigate("/dashboard/list-records");
+      } catch {
+        toast.error("Failed to update record.");
+      }
+    }
+  };
+
   //* Form savers
   const saveIdentityForm = (data = {}) => {
     const tempData = { ...data, name: `${data?.firstName} ${data?.lastName}` };
@@ -79,10 +106,10 @@ const useCreateRecordForm = () => {
     saveIdentityForm,
     saveLocationForm,
     saveCrimesForm,
-    submitCreateRecordForm,
+    submitForm: edit ? submitEditRecordForm : submitCreateRecordForm,
     navigateTo,
     allFormDataReceived,
-    isLoading,
+    isLoading: createLoading || editLoading,
   };
 };
 
