@@ -3,6 +3,7 @@ import { Box } from "../../../../../../../../components/Box/Box";
 import Button from "../../../../../../../../components/Buttons/Button";
 import { Error } from "../../../../../../../../components/Errors/Error";
 import { TextField } from "../../../../../../../../components/FormFields/FormFields.style";
+import { getName } from "../../../../../../../../utils/helper";
 import {
   ButtonGroup,
   FormSectionCard,
@@ -10,7 +11,7 @@ import {
 import useCreateRecordForm from "../../hooks/useCreateRecordForm";
 import { FlexBox } from "./IdentityForm.style";
 
-const IdentityForm = () => {
+const IdentityForm = ({ initialRecordData = {} }) => {
   const { saveIdentityForm, isLoading } = useCreateRecordForm();
   const {
     register,
@@ -18,6 +19,11 @@ const IdentityForm = () => {
     handleSubmit,
   } = useForm({
     mode: "all",
+    defaultValues: {
+      firstName: getName({ type: "first", data: initialRecordData }),
+      lastName: getName({ type: "last", data: initialRecordData }),
+      mobile: initialRecordData?.mobile,
+    },
   });
 
   return (
