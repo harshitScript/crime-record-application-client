@@ -17,6 +17,13 @@ const recordApi = createApi({
         method: "POST",
       }),
     }),
+    editRecord: builder.mutation({
+      query: ({ recordId, body }) => ({
+        url: `/record/${recordId}/edit`,
+        method: "PUT",
+        body,
+      }),
+    }),
     getRecordsId: builder.query({
       query: ({ page, creator }) => {
         return `/record/list-ids/${page}?creator=${creator}`;
@@ -52,6 +59,7 @@ const recordApi = createApi({
 
 export const {
   useCreateRecordMutation,
+  useEditRecordMutation,
   useGetRecordsIdQuery,
   useUploadRecordImageMutation,
   useGetRecordInfoQuery,
