@@ -17,9 +17,9 @@ import useCreateRecordForm from "../../hooks/useCreateRecordForm";
 import CrimeEntriesDisplay from "./CrimeEntries/CrimeEntriesDisplay";
 import { FlexBox } from "./CrimesForm.style";
 
-const CrimesForm = () => {
+const CrimesForm = ({ initialRecordData = {} }) => {
   const { saveCrimesForm, isLoading } = useCreateRecordForm();
-  const [entries, setEntries] = useState([]);
+  const [entries, setEntries] = useState(initialRecordData?.crimes || []);
   const {
     register,
     formState: { errors },
