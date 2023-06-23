@@ -6,7 +6,7 @@ const SubmitForm = () => {
   const { allFormDataReceived, submitCreateRecordForm, isLoading } =
     useCreateRecordForm();
   return allFormDataReceived ? (
-    <Card>
+    <Card id="submit-record">
       <LinkButton
         fullWidth={true}
         onClick={submitCreateRecordForm}
